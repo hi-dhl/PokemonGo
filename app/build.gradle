@@ -1,0 +1,81 @@
+import com.hi.dhl.plugin.*
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
+
+android {
+    compileSdkVersion BuildConfig.compileSdkVersion
+    buildToolsVersion BuildConfig.buildToolsVersion
+
+    defaultConfig {
+        applicationId "com.hi.dhl.pokemon"
+        minSdkVersion BuildConfig.minSdkVersion
+        targetSdkVersion BuildConfig.targetSdkVersion
+        versionCode BuildConfig.versionCode
+        versionName BuildConfig.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+    buildFeatures {
+        dataBinding = true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation Kt.stdlibJdk8
+    implementation AndroidX.coreKtx
+    implementation AndroidX.appcompat
+    implementation AndroidX.constraintlayout
+    implementation AndroidX.pagingRuntime
+    implementation Fragment.runtimeKtx
+    implementation Depend.timber
+    implementation Room.runtime
+    kapt Room.compiler
+    implementation Anko.common
+    implementation Koin.core
+    implementation Koin.androidCore
+    implementation Koin.viewmodel
+    implementation Depend.jDatabinding
+    implementation AndroidX.cardview
+    implementation Retrofit.runtime
+    implementation Retrofit.gson
+    implementation Retrofit.logging
+    implementation AndroidX.swiperefreshlayout
+    implementation Coil.runtime
+    implementation AndroidX.appStartup
+
+    implementation Hilt.daggerRuntime
+    kapt Hilt.daggerCompiler
+
+    implementation Hilt.viewModule
+    kapt Hilt.compiler
+
+    implementation Depend.jDatabinding
+
+    testImplementation Depend.junit
+    androidTestImplementation Depend.androidTestJunit
+    androidTestImplementation Depend.espressoCore
+
+}
