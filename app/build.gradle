@@ -74,6 +74,8 @@ dependencies {
 
     implementation Depend.jDatabinding
 
+    implementation 'com.elyeproj.libraries:loaderviewlibrary:2.0.0'
+
     testImplementation Depend.junit
     androidTestImplementation Depend.androidTestJunit
     androidTestImplementation Depend.espressoCore

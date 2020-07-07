@@ -13,7 +13,8 @@
             android:id="@+id/error_msg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:textColor="@android:color/background_dark" />
 
         <ProgressBar
             android:id="@+id/progress_bar"
@@ -28,7 +29,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="重试" />
+            android:text="@string/footer_retary"
+            android:textColor="@android:color/background_dark" />
     </LinearLayout>
 
 </layout>

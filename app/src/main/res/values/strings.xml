@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">PokemonGo</string>
+    <string name="footer_retary">重试</string>
 </resources>

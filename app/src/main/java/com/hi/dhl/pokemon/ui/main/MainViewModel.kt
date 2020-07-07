@@ -21,7 +21,6 @@ class MainViewModel @ViewModelInject constructor(
     val mPolemonRepository: Repository
 ) : ViewModel() {
 
-    @OptIn(ExperimentalCoroutinesApi::class)
     fun postOfData(): LiveData<PagingData<PokemonListModel>> =
         mPolemonRepository.postOfData().asLiveData()
 }

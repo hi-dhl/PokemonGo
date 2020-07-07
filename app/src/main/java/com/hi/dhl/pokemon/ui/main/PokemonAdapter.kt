@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.paging.PagingDataAdapter
 import coil.api.load
-import coil.transform.CircleCropTransformation
 import com.hi.dhl.jdatabinding.DataBindingViewHolder
 import com.hi.dhl.jdatabinding.dowithTry
 import com.hi.dhl.pokemon.R
@@ -44,7 +43,6 @@ class PokemonAdapter :
     }
 }
 
-
 class PokemonViewModel(view: View) : DataBindingViewHolder<PokemonListModel>(view) {
     private val mBinding: RecycleItemPokemonBinding by viewHolderBinding(view)
     override fun bindData(data: PokemonListModel, position: Int) {
@@ -53,6 +51,7 @@ class PokemonViewModel(view: View) : DataBindingViewHolder<PokemonListModel>(vie
             avator.load(data.url) {
                 crossfade(true)
             }
+            itemBgView.setOnClickListener {  }
             executePendingBindings()
         }
     }
