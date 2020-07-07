@@ -1,10 +1,7 @@
 package com.hi.dhl.pokemon.data.remote
 
 import com.hi.dhl.pokemon.data.entity.ListingResponse
-import com.hi.dhl.pokemon.data.entity.NetWorkPokemon
-import okhttp3.OkHttpClient
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import com.hi.dhl.pokemon.data.entity.NetWorkPokemonInfo
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -24,5 +21,5 @@ interface PokemonService {
     ): ListingResponse
 
     @GET("pokemon/{name}")
-    suspend fun fetchPokemonInfo(@Path("name") name: String): NetWorkPokemon
+    suspend fun fetchPokemonInfo(@Path("name") name: String): NetWorkPokemonInfo
 }

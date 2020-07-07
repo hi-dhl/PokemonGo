@@ -4,10 +4,12 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
+import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import com.hi.dhl.pokemon.data.repository.Repository
 import com.hi.dhl.pokemon.model.PokemonListModel
-import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.launch
+import timber.log.Timber
 
 /**
  * <pre>
@@ -18,9 +20,10 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
  */
 
 class MainViewModel @ViewModelInject constructor(
-    val mPolemonRepository: Repository
+    val polemonRepository: Repository
 ) : ViewModel() {
 
     fun postOfData(): LiveData<PagingData<PokemonListModel>> =
-        mPolemonRepository.postOfData().asLiveData()
+        polemonRepository.featchPokemonList().asLiveData()
+
 }

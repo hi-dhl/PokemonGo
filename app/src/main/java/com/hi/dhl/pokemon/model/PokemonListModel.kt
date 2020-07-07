@@ -1,6 +1,8 @@
 package com.hi.dhl.pokemon.model
 
+import android.os.Parcelable
 import androidx.recyclerview.widget.DiffUtil
+import kotlinx.android.parcel.Parcelize
 
 /**
  * <pre>
@@ -9,11 +11,13 @@ import androidx.recyclerview.widget.DiffUtil
  *     desc  :
  * </pre>
  */
+
+@Parcelize
 data class PokemonListModel(
     var page: Int = 0,
     val name: String,
     val url: String
-) {
+) : Parcelable {
     companion object {
         val diffCallback = object : DiffUtil.ItemCallback<PokemonListModel>() {
             override fun areItemsTheSame(

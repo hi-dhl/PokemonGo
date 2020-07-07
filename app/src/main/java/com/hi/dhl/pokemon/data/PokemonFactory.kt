@@ -1,6 +1,7 @@
 package com.hi.dhl.pokemon.data
 
 import androidx.paging.PagingConfig
+import com.hi.dhl.pokemon.data.mapper.Response2InfoModelMapper
 import com.hi.dhl.pokemon.data.mapper.Response2ModelMapper
 import com.hi.dhl.pokemon.data.remote.PokemonService
 import com.hi.dhl.pokemon.data.repository.PokemonRepositoryImpl
@@ -16,7 +17,7 @@ import com.hi.dhl.pokemon.data.repository.Repository
 object PokemonFactory {
 
     fun makePokemonRepository(api: PokemonService): Repository =
-        PokemonRepositoryImpl(api, pagingConfig, Response2ModelMapper())
+        PokemonRepositoryImpl(api, pagingConfig, Response2ModelMapper(), Response2InfoModelMapper())
 
     val pagingConfig = PagingConfig(
         // 每页显示的数据的大小

@@ -4,4 +4,5 @@
     <dimen name="card_vertical_height">100dp</dimen>
     <dimen name="recycle_item_avrtor">100dp</dimen>
     <dimen name="recycle_item_base_margin">10dp</dimen>
+    <dimen name="details_img_w_h">200dp</dimen>
 </resources>

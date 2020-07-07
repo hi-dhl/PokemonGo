@@ -1,6 +1,9 @@
 package com.hi.dhl.pokemon.data.repository
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.paging.PagingData
+import com.hi.dhl.pokemon.model.PokemonInfoModel
 import com.hi.dhl.pokemon.model.PokemonListModel
 import kotlinx.coroutines.flow.Flow
 
@@ -12,5 +15,7 @@ import kotlinx.coroutines.flow.Flow
  * </pre>
  */
 interface Repository {
-    fun postOfData(): Flow<PagingData<PokemonListModel>>
+    fun featchPokemonList(): Flow<PagingData<PokemonListModel>>
+
+    suspend fun featchPokemonInfo(name: String): LiveData<PokemonInfoModel>
 }

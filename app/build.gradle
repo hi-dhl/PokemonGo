@@ -32,6 +32,14 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    sourceSets {
+        androidTest.java.srcDirs += "src/test-common/java"
+        test.java.srcDirs += "src/test-common/java"
+        test.assets.srcDirs += files("$projectDir/schemas".toString())
+        main.java.srcDirs += 'src/main/kotlin/'
+        main.java.srcDirs += 'build/generated/source/protos/main/java'
+        test.java.srcDirs += 'src/test/kotlin/'
+    }
 
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()

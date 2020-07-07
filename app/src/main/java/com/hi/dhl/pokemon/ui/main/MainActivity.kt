@@ -33,10 +33,12 @@ class MainActivity : DataBindingAppCompatActivity() {
             mPomemonAdapter.submitData(lifecycle, it)
         })
 
-        lifecycleScope.launch {
+        lifecycleScope.launchWhenCreated {
             mPomemonAdapter.loadStateFlow.collectLatest { state ->
                 swiperRefresh.isRefreshing = state.refresh is LoadState.Loading
             }
         }
+
+        mViewModel.fectchPokemonInfo("bulbasaur")
     }
 }

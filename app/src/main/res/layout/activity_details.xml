@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="pokemonListModel"
+            type="com.hi.dhl.pokemon.model.PokemonListModel" />
+
+        <variable
+            name="mainViewModel"
+            type="com.hi.dhl.pokemon.ui.main.MainViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.main.MainActivity">
+
+
+        <ImageView
+            android:id="@+id/avator"
+            android:layout_width="@dimen/details_img_w_h"
+            android:layout_height="@dimen/details_img_w_h"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:bindingAvator="@{pokemonListModel.url}"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
