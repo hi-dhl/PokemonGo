@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.hi.dhl.pokemon">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".PokemonGoApp"
         android:allowBackup="true"

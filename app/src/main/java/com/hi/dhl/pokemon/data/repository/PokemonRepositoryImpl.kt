@@ -24,7 +24,7 @@ class PokemonRepositoryImpl(
     val mapper2Molde: Mapper<ListingData, PokemonListModel>
 ) : Repository {
 
-    fun postOfData(): Flow<PagingData<PokemonListModel>> {
+    override fun postOfData(): Flow<PagingData<PokemonListModel>> {
         return Pager(pageConfig) {
             // 加载数据库的数据
             PokemonItemPagingSource(api)

@@ -1,5 +1,9 @@
 package com.hi.dhl.pokemon.data.repository
 
+import androidx.paging.PagingData
+import com.hi.dhl.pokemon.model.PokemonListModel
+import kotlinx.coroutines.flow.Flow
+
 /**
  * <pre>
  *     author: dhl
@@ -8,4 +12,5 @@ package com.hi.dhl.pokemon.data.repository
  * </pre>
  */
 interface Repository {
+    fun postOfData(): Flow<PagingData<PokemonListModel>>
 }
