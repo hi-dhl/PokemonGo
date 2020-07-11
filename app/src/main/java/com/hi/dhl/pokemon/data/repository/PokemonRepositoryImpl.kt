@@ -1,12 +1,11 @@
 package com.hi.dhl.pokemon.data.repository
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.hi.dhl.pokemon.data.entity.ListingData
+import com.hi.dhl.paging3.data.local.AppDataBase
 import com.hi.dhl.pokemon.data.entity.NetWorkPokemonInfo
+import com.hi.dhl.pokemon.data.entity.PokemonEntity
 import com.hi.dhl.pokemon.data.mapper.Mapper
 import com.hi.dhl.pokemon.data.remote.PokemonService
 import com.hi.dhl.pokemon.model.PokemonInfoModel
@@ -16,7 +15,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.withContext
 import timber.log.Timber
 
 /**
@@ -29,20 +27,32 @@ import timber.log.Timber
 
 class PokemonRepositoryImpl(
     val api: PokemonService,
+    val db: AppDataBase,
     val pageConfig: PagingConfig,
-    val mapper2Molde: Mapper<ListingData, PokemonListModel>,
+    val mapper2Molde: Mapper<PokemonEntity, PokemonListModel>,
     val mapper2InfoModel: Mapper<NetWorkPokemonInfo, PokemonInfoModel>
 ) : Repository {
 
     override fun featchPokemonList(): Flow<PagingData<PokemonListModel>> {
-        return Pager(pageConfig) {
-            // 加载数据库的数据
-            PokemonItemPagingSource(api)
-        }.flow.map { listerData ->
-            listerData.map { mapper2Molde.map(it) }
+        return Pager(
+            config = pageConfig,
+            remoteMediator = PokemonRemoteSource(api, db)
+        ) {
+           db.pokemonDao().getPokemon()
+        }.flow.map { pagingData ->
+            pagingData.map { mapper2Molde.map(it) }
         }
     }
 
+    //    override fun featchPokemonList(): Flow<PagingData<PokemonListModel>> {
+//        return Pager(pageConfig) {
+//
+//            PokemonItemPagingSource(api)
+//        }.flow.map { listerData ->
+//            listerData.map { mapper2Molde.map(it) }
+//        }
+//    }
+//
     override suspend fun featchPokemonInfo(name: String): Flow<PokemonInfoModel> {
         return flow {
             val json = api.fetchPokemonInfo()

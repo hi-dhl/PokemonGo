@@ -1,6 +1,8 @@
 package com.hi.dhl.pokemon.di
 
+import com.hi.dhl.paging3.data.local.AppDataBase
 import com.hi.dhl.pokemon.data.PokemonFactory
+import com.hi.dhl.pokemon.data.local.PokemonDao
 import com.hi.dhl.pokemon.data.remote.PokemonService
 import com.hi.dhl.pokemon.data.repository.Repository
 import dagger.Module
@@ -23,9 +25,10 @@ class RepositoryModule {
     @Singleton
     @Provides
     fun provideTasksRepository(
-        api: PokemonService
+        api: PokemonService,
+        db: AppDataBase
     ): Repository {
-        return PokemonFactory.makePokemonRepository(api)
+        return PokemonFactory.makePokemonRepository(api, db)
     }
 
 }

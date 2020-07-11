@@ -1,6 +1,7 @@
 package com.hi.dhl.pokemon.data.mapper
 
 import com.hi.dhl.pokemon.data.entity.ListingData
+import com.hi.dhl.pokemon.data.entity.PokemonEntity
 import com.hi.dhl.pokemon.model.PokemonListModel
 
 /**
@@ -10,9 +11,9 @@ import com.hi.dhl.pokemon.model.PokemonListModel
  *     desc  :
  * </pre>
  */
-class Response2ModelMapper : Mapper<ListingData, PokemonListModel> {
+class Response2ModelMapper : Mapper<PokemonEntity, PokemonListModel> {
 
-    override fun map(input: ListingData): PokemonListModel =
-        PokemonListModel(input.page, input.name, input.getImageUrl())
+    override fun map(input: PokemonEntity): PokemonListModel =
+        PokemonListModel(name = input.name, url = input.url)
 
 }

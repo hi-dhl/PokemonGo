@@ -14,10 +14,9 @@ import kotlinx.android.parcel.Parcelize
  */
 
 @Entity
-@Parcelize
 data class PokemonEntity(
-    @PrimaryKey
-    var page: Int = 0,
+    @PrimaryKey(autoGenerate = true)
+    var pokemonId: Int = 0,
     val name: String,
     val url: String
-) : Parcelable
+)

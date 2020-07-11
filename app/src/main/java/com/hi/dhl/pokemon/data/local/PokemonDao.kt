@@ -1,5 +1,6 @@
 package com.hi.dhl.pokemon.data.local
 
+import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -15,9 +16,14 @@ import com.hi.dhl.pokemon.data.entity.PokemonEntity
  */
 @Dao
 interface PokemonDao {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertPokemonList(pokemonList: List<PokemonEntity>)
 
-    @Query("SELECT * FROM PokemonEntity WHERE page = :page_")
-    fun getPokemonList(page_: Int): List<PokemonEntity>
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertPokemon(pokemonList: List<PokemonEntity>)
+
+    @Query("SELECT * FROM PokemonEntity")
+    fun getPokemon(): PagingSource<Int, PokemonEntity>
+
+
+    @Query("DELETE FROM PokemonEntity")
+    suspend fun clearPokemon()
 }

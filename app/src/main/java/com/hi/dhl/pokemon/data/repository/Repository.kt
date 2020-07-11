@@ -3,6 +3,7 @@ package com.hi.dhl.pokemon.data.repository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PagingData
+import com.hi.dhl.pokemon.data.entity.PokemonEntity
 import com.hi.dhl.pokemon.model.PokemonInfoModel
 import com.hi.dhl.pokemon.model.PokemonListModel
 import kotlinx.coroutines.flow.Flow

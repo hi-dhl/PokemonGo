@@ -1,6 +1,8 @@
 package com.hi.dhl.pokemon.data
 
 import androidx.paging.PagingConfig
+import com.hi.dhl.paging3.data.local.AppDataBase
+import com.hi.dhl.pokemon.data.local.PokemonDao
 import com.hi.dhl.pokemon.data.mapper.Response2InfoModelMapper
 import com.hi.dhl.pokemon.data.mapper.Response2ModelMapper
 import com.hi.dhl.pokemon.data.remote.PokemonService
@@ -16,15 +18,14 @@ import com.hi.dhl.pokemon.data.repository.Repository
  */
 object PokemonFactory {
 
-    fun makePokemonRepository(api: PokemonService): Repository =
-        PokemonRepositoryImpl(api, pagingConfig, Response2ModelMapper(), Response2InfoModelMapper())
+    fun makePokemonRepository(api: PokemonService, db: AppDataBase): Repository =
+        PokemonRepositoryImpl(api, db, pagingConfig, Response2ModelMapper(), Response2InfoModelMapper())
 
     val pagingConfig = PagingConfig(
         // 每页显示的数据的大小
         pageSize = 30,
-
         // 开启占位符
-        enablePlaceholders = false
+        enablePlaceholders = false,
 
         // 预刷新的距离，距离最后一个 item 多远时加载数据
 //        prefetchDistance = 3,
@@ -56,6 +57,6 @@ object PokemonFactory {
          * internal const val DEFAULT_INITIAL_PAGE_MULTIPLIER = 3
          * val initialLoadSize: Int = pageSize * DEFAULT_INITIAL_PAGE_MULTIPLIER
          */
-//        initialLoadSize = 60
+        initialLoadSize = 60
     )
 }

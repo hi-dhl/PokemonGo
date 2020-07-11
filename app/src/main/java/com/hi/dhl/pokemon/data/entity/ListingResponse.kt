@@ -16,7 +16,6 @@ data class ListingResponse(
 )
 
 data class ListingData(
-    var page: Int = 0,
     val name: String,
     val url: String
 ) {
@@ -26,6 +25,6 @@ data class ListingData(
     }
 
     override fun toString(): String {
-        return "ListingData(page=$page, name='$name', url='$url')"
+        return "ListingData(name='$name', url='$url')"
     }
 }

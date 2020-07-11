@@ -31,6 +31,7 @@ object Versions {
     val junitExt = "1.1.1"
     val espressoCore = "3.2.0"
     val jDatabinding = "1.0.1"
+    val customview = "1.0.0"
     val runtime = "0.11.0"
     val hit = "2.28-alpha"
     val hitViewModule = "1.0.0-alpha01"
@@ -118,6 +119,7 @@ object Depend {
     val androidTestJunit = "androidx.test.ext:junit:${Versions.junitExt}"
     val espressoCore = "androidx.test.espresso:espresso-core:${Versions.espressoCore}"
     val jDatabinding = "com.hi-dhl:jdatabinding:${Versions.jDatabinding}"
+    val jCustomView = "com.hi-dhl:customview:${Versions.customview}"
     val timber = "com.jakewharton.timber:timber:${Versions.timber}"
 }
 

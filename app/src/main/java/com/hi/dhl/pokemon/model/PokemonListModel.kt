@@ -14,7 +14,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class PokemonListModel(
-    var page: Int = 0,
+    var id: Int = 0,
     val name: String,
     val url: String
 ) : Parcelable {
@@ -24,7 +24,7 @@ data class PokemonListModel(
                 oldItem: PokemonListModel,
                 newItem: PokemonListModel
             ): Boolean =
-                oldItem.page == newItem.page
+                oldItem.id == newItem.id
 
             override fun areContentsTheSame(
                 oldItem: PokemonListModel,

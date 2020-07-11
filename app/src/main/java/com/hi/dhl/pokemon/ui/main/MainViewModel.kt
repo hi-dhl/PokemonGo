@@ -25,6 +25,4 @@ class MainViewModel @ViewModelInject constructor(
     fun postOfData(): LiveData<PagingData<PokemonListModel>> =
         polemonRepository.featchPokemonList().asLiveData()
 
-
-
 }
