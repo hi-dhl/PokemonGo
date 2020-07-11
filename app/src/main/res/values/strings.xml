@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">PokemonGo</string>
     <string name="footer_retary">重试</string>
+    <string name="weight">Weight</string>
+    <string name="height">Height</string>
 </resources>

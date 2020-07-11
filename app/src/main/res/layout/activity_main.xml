@@ -11,25 +11,71 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swiperRefresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.main.MainActivity">
+        android:fitsSystemWindows="true"
+        android:layout_height="match_parent">
 
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/swiperRefresh"
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/motionLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/contentBackground"
+            android:fitsSystemWindows="false">
+
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/head"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                app:srcCompat="@drawable/rounded_bottom_border_red"
+                android:theme="@style/AppTheme"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <include layout="@layout/motion_11_coordinatorlayout_header" />
+
+            </com.google.android.material.appbar.AppBarLayout>
+
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyleView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 app:spanCount="2" />
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:visibility="gone">
+
+
+                <!--            <LinearLayout-->
+                <!--                android:id="@+id/head"-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:layout_height="200dp"-->
+                <!--                android:background="@drawable/rounded_bottom_border_red"-->
+                <!--                app:layout_constraintTop_toTopOf="parent">-->
+
+                <!--                <TextView-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_gravity="left|center"-->
+                <!--                    android:layout_marginStart="16dp"-->
+                <!--                    android:text="@string/app_name"-->
+                <!--                    android:textColor="@color/white"-->
+                <!--                    android:textSize="32sp"-->
+                <!--                    android:textStyle="bold" />-->
+
+                <!--            </LinearLayout>-->
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </layout>

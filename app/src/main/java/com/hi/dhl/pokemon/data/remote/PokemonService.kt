@@ -20,6 +20,6 @@ interface PokemonService {
         @Query("offset") offset: Int = 0
     ): ListingResponse
 
-    @GET("pokemon/{name}")
-    suspend fun fetchPokemonInfo(@Path("name") name: String): NetWorkPokemonInfo
+    @GET("pokemon/bulbasaur")
+    suspend fun fetchPokemonInfo(): NetWorkPokemonInfo
 }

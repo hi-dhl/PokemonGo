@@ -13,8 +13,11 @@ import com.hi.dhl.pokemon.model.PokemonInfoModel
 import com.hi.dhl.pokemon.model.PokemonListModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
+import timber.log.Timber
 
 /**
  * <pre>
@@ -40,10 +43,12 @@ class PokemonRepositoryImpl(
         }
     }
 
-    override suspend fun featchPokemonInfo(name: String): LiveData<PokemonInfoModel> =
-        withContext(Dispatchers.IO) {
-            val liveData = MutableLiveData<PokemonInfoModel>()
-            liveData.apply { postValue(mapper2InfoModel.map(api.fetchPokemonInfo(name))) }
-        }
-
+    override suspend fun featchPokemonInfo(name: String): Flow<PokemonInfoModel> {
+        return flow {
+            val json = api.fetchPokemonInfo()
+            Timber.tag("featchPokemonInfo").e(json.toString())
+            val model = mapper2InfoModel.map(json)
+            emit(model)
+        }.flowOn(Dispatchers.IO)
+    }
 }

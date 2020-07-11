@@ -1,5 +1,7 @@
 package com.hi.dhl.plugin
 
+import groovyjarjarantlr.Version
+
 /**
  * <pre>
  *     author: dhl
@@ -13,7 +15,7 @@ object Versions {
     val okhttpLogging = "3.9.0"
     val appcompat = "1.1.0"
     val coreKtx = "1.3.0"
-    val constraintlayout = "1.1.3"
+    val constraintlayout = "2.0.0-beta3"
     val paging = "3.0.0-alpha01"
     val timber = "4.7.1"
     val kotlin = "1.3.72"
@@ -33,6 +35,7 @@ object Versions {
     val hit = "2.28-alpha"
     val hitViewModule = "1.0.0-alpha01"
     val appStartup = "1.0.0-alpha01"
+    val material = "1.2.0-alpha06"
 }
 
 object AndroidX {
@@ -50,6 +53,10 @@ object AndroidX {
         "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.swiperefreshlayout}"
 
     val appStartup = "androidx.startup:startup-runtime:${Versions.appStartup}"
+}
+
+object Android {
+    val meteria = "com.google.android.material:material:${Versions.material}"
 }
 
 object Hilt {

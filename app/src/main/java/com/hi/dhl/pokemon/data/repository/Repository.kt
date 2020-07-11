@@ -17,5 +17,5 @@ import kotlinx.coroutines.flow.Flow
 interface Repository {
     fun featchPokemonList(): Flow<PagingData<PokemonListModel>>
 
-    suspend fun featchPokemonInfo(name: String): LiveData<PokemonInfoModel>
+    suspend fun featchPokemonInfo(name: String): Flow<PokemonInfoModel>
 }

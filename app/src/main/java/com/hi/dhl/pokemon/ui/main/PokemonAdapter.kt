@@ -11,6 +11,7 @@ import com.hi.dhl.jdatabinding.dowithTry
 import com.hi.dhl.pokemon.R
 import com.hi.dhl.pokemon.databinding.RecycleItemPokemonBinding
 import com.hi.dhl.pokemon.model.PokemonListModel
+import com.hi.dhl.pokemon.ui.detail.DetailActivity
 
 /**
  * <pre>
@@ -51,7 +52,12 @@ class PokemonViewModel(view: View) : DataBindingViewHolder<PokemonListModel>(vie
             avator.load(data.url) {
                 crossfade(true)
             }
-            itemBgView.setOnClickListener {  }
+            itemBgView.setOnClickListener {
+                DetailActivity.jumpAcrtivity(
+                    view.context,
+                    data
+                )
+            }
             executePendingBindings()
         }
     }

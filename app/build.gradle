@@ -73,6 +73,7 @@ dependencies {
     implementation AndroidX.swiperefreshlayout
     implementation Coil.runtime
     implementation AndroidX.appStartup
+    implementation Android.meteria
 
     implementation Hilt.daggerRuntime
     kapt Hilt.daggerCompiler
@@ -82,7 +83,7 @@ dependencies {
 
     implementation Depend.jDatabinding
 
-    implementation 'com.elyeproj.libraries:loaderviewlibrary:2.0.0'
+    implementation 'me.zhanghai.android.materialprogressbar:library:1.6.1'
 
     testImplementation Depend.junit
     androidTestImplementation Depend.androidTestJunit

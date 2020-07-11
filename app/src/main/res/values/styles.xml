@@ -1,10 +1,72 @@
 <resources>
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="circleImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="TextStyle" parent="@android:style/Widget.TextView">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="progress_horizontal_1" parent="Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:indeterminateOnly">false</item>
+        <!--进度条的进度颜色drawable文件-->
+        <item name="android:progressDrawable">@drawable/progress_horizontal_1</item>
+        <!--进度条的最小高度-->
+        <item name="android:minHeight">@dimen/progress_height</item>
+        <!--进度条的最大高度-->
+        <item name="android:maxHeight">@dimen/progress_height</item>
+    </style>
+
+    <style name="progress_horizontal_2" parent="Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:indeterminateOnly">false</item>
+        <!--进度条的进度颜色drawable文件-->
+        <item name="android:progressDrawable">@drawable/progress_horizontal_2</item>
+        <!--进度条的最小高度-->
+        <item name="android:minHeight">@dimen/progress_height</item>
+        <!--进度条的最大高度-->
+        <item name="android:maxHeight">@dimen/progress_height</item>
+    </style>
+
+    <style name="progress_horizontal_3" parent="Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:indeterminateOnly">false</item>
+        <!--进度条的进度颜色drawable文件-->
+        <item name="android:progressDrawable">@drawable/progress_horizontal_3</item>
+        <!--进度条的最小高度-->
+        <item name="android:minHeight">@dimen/progress_height</item>
+        <!--进度条的最大高度-->
+        <item name="android:maxHeight">@dimen/progress_height</item>
+    </style>
+
+    <style name="progress_horizontal_4" parent="Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:indeterminateOnly">false</item>
+        <!--进度条的进度颜色drawable文件-->
+        <item name="android:progressDrawable">@drawable/progress_horizontal_4</item>
+        <!--进度条的最小高度-->
+        <item name="android:minHeight">@dimen/progress_height</item>
+        <!--进度条的最大高度-->
+        <item name="android:maxHeight">@dimen/progress_height</item>
+    </style>
+
+    <style name="progress_horizontal_5" parent="Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:indeterminateOnly">false</item>
+        <!--进度条的进度颜色drawable文件-->
+        <item name="android:progressDrawable">@drawable/progress_horizontal_5</item>
+        <!--进度条的最小高度-->
+        <item name="android:minHeight">@dimen/progress_height</item>
+        <!--进度条的最大高度-->
+        <item name="android:maxHeight">@dimen/progress_height</item>
+    </style>
 </resources>

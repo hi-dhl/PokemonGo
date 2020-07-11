@@ -39,6 +39,5 @@ class MainActivity : DataBindingAppCompatActivity() {
             }
         }
 
-        mViewModel.fectchPokemonInfo("bulbasaur")
     }
 }
