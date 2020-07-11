@@ -4,8 +4,8 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.hi.dhl.paging3.data.local.AppDataBase
-import com.hi.dhl.pokemon.data.entity.NetWorkPokemonInfo
 import com.hi.dhl.pokemon.data.entity.PokemonEntity
+import com.hi.dhl.pokemon.data.entity.PokemonInfoEntity
 import com.hi.dhl.pokemon.data.mapper.Mapper
 import com.hi.dhl.pokemon.data.remote.PokemonService
 import com.hi.dhl.pokemon.model.PokemonInfoModel
@@ -30,7 +30,7 @@ class PokemonRepositoryImpl(
     val db: AppDataBase,
     val pageConfig: PagingConfig,
     val mapper2Molde: Mapper<PokemonEntity, PokemonListModel>,
-    val mapper2InfoModel: Mapper<NetWorkPokemonInfo, PokemonInfoModel>
+    val mapper2InfoModel: Mapper<PokemonInfoEntity, PokemonInfoModel>
 ) : Repository {
 
     override fun featchPokemonList(): Flow<PagingData<PokemonListModel>> {
@@ -38,7 +38,7 @@ class PokemonRepositoryImpl(
             config = pageConfig,
             remoteMediator = PokemonRemoteSource(api, db)
         ) {
-           db.pokemonDao().getPokemon()
+            db.pokemonDao().getPokemon()
         }.flow.map { pagingData ->
             pagingData.map { mapper2Molde.map(it) }
         }
@@ -55,9 +55,24 @@ class PokemonRepositoryImpl(
 //
     override suspend fun featchPokemonInfo(name: String): Flow<PokemonInfoModel> {
         return flow {
-            val json = api.fetchPokemonInfo()
-            Timber.tag("featchPokemonInfo").e(json.toString())
-            val model = mapper2InfoModel.map(json)
+            val pokemonDao = db.pokemonInfoDao()
+            var infoModel = pokemonDao.getPokemon(name)
+
+            if (infoModel == null) {
+                val netWorkPokemonInfo = api.fetchPokemonInfo(name)
+                Timber.tag("featchPokemonInfo").e(netWorkPokemonInfo.toString())
+                infoModel = netWorkPokemonInfo.let {
+                    PokemonInfoEntity(
+                        name = it.name,
+                        height = it.height,
+                        weight = it.weight,
+                        experience = it.experience
+                    )
+                }
+                pokemonDao.insertPokemon(infoModel)
+            }
+
+            val model = mapper2InfoModel.map(infoModel)
             emit(model)
         }.flowOn(Dispatchers.IO)
     }

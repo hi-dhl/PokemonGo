@@ -31,10 +31,9 @@ class DetailViewModel @ViewModelInject constructor(
 
     @OptIn(ExperimentalCoroutinesApi::class)
     fun fectchPokemonInfo(name: String) = liveData<PokemonInfoModel> {
-        polemonRepository.featchPokemonInfo("name")
+        polemonRepository.featchPokemonInfo(name)
             .onStart {
                 mLoading.set(true)
-                Timber.tag(TAG).e("---")
             }
             .catch {
                 Timber.tag(TAG).e(it)
