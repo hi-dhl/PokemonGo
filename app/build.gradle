@@ -84,9 +84,8 @@ dependencies {
     kapt Hilt.compiler
 
     implementation Depend.jDatabinding
-    implementation Depend.jCustomView
-
-    implementation 'me.zhanghai.android.materialprogressbar:library:1.6.1'
+//    implementation Depend.jCustomView
+    implementation project(":jcustomview")
 
     testImplementation Depend.junit
     androidTestImplementation Depend.androidTestJunit

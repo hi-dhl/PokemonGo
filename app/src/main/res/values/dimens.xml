@@ -68,4 +68,5 @@
     <dimen name="details_img_m_t">180dp</dimen>
 
     <dimen name="progress_height">6dp</dimen>
+    <dimen name="circle_stroke_width">10dp</dimen>
 </resources>

@@ -36,7 +36,7 @@ class PokemonRepositoryImpl(
     override fun featchPokemonList(): Flow<PagingData<PokemonListModel>> {
         return Pager(
             config = pageConfig,
-            remoteMediator = PokemonRemoteSource(api, db)
+            remoteMediator = PokemonRemoteMediator(api, db)
         ) {
             db.pokemonDao().getPokemon()
         }.flow.map { pagingData ->

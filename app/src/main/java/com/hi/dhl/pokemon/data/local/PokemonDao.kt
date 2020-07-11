@@ -24,6 +24,6 @@ interface PokemonDao {
     fun getPokemon(): PagingSource<Int, PokemonEntity>
 
 
-    @Query("DELETE FROM PokemonEntity")
-    suspend fun clearPokemon()
+    @Query("DELETE FROM PokemonEntity where remoteName = :name")
+    suspend fun clearPokemon(name: String)
 }

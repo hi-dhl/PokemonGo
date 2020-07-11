@@ -1,19 +1,15 @@
 package com.hi.dhl.pokemon.ui.binding
 
-import android.animation.ValueAnimator
-import android.graphics.Color
-import android.graphics.drawable.ClipDrawable
-import android.graphics.drawable.ColorDrawable
-import android.text.TextUtils
-import android.view.Gravity
+import android.app.Activity
+import android.view.View
 import android.widget.ImageView
-import android.widget.ProgressBar
 import androidx.databinding.BindingAdapter
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import coil.api.load
+import com.hi.dhl.jcustomvie.JProgressView
 import com.hi.dhl.pokemon.R
-import com.hi.dhl.pokemon.ext.visible
-import com.hi.dhl.pokemon.model.PokemonInfoModel
+import com.hi.dhl.pokemon.model.PokemonListModel
+import com.hi.dhl.pokemon.ui.detail.DetailActivity
 import timber.log.Timber
 
 /**
@@ -28,6 +24,7 @@ import timber.log.Timber
 fun bindingAvator(imageView: ImageView, url: String) {
     imageView.load(url) {
         crossfade(true)
+        placeholder(R.mipmap.ic_launcher_round)
     }
 }
 
@@ -35,37 +32,31 @@ fun bindingAvator(imageView: ImageView, url: String) {
 fun bindingLoading(swipe: SwipeRefreshLayout, isLoading: Boolean) {
     Timber.tag("bindingLoading").e(" isLoading = ${isLoading}")
     swipe.isRefreshing = isLoading
-    if (!isLoading) swipe.isRefreshing = false
+    if (!isLoading) swipe.isEnabled = false
 }
 
-//@BindingAdapter("bindingProgress")
-//fun bindingProgress(
-//    progressBar: ProgressBar,
-//    pokemonInfoModel: PokemonInfoModel
-//) {
-//    progressBar.visible()
-//    progressBar.max = pokemonInfoModel.max
-//    progressBar.setBackgroundResource(R.color.color_progress_bg) // 背景色
-//
-//    // 前景色
-////        if (TextUtils.isEmpty(lableColor) || lableColor.length <= 0) return
-//    val drawable = ClipDrawable(
-//        ColorDrawable(Color.RED),
-//        Gravity.LEFT,
-//        ClipDrawable.HORIZONTAL
-//    )
-//    progressBar.setProgressDrawable(drawable)
-//
-//    // 开启动画
-//    val valueAnimator: ValueAnimator = ValueAnimator.ofInt(0, pokemonInfoModel.progress)
-//    valueAnimator.setDuration(500)
-//    valueAnimator.addUpdateListener(object : ValueAnimator.AnimatorUpdateListener {
-//        override fun onAnimationUpdate(animation: ValueAnimator) {
-//            var current = animation.animatedValue as Int
-//            progressBar.setProgress(current)
-//        }
-//
-//    })
-//    valueAnimator.start()
-//
-//}
+@BindingAdapter("progressValue", "maxProgressValue")
+fun bindingProgressView(progress: JProgressView, progressValue: Int, maxProgressValue: Int) {
+    progress
+        .setProgress(progressValue.toFloat())
+        .setMaxProgress(maxProgressValue)
+        .startAnimal()
+}
+
+@BindingAdapter("finish")
+fun bindingFinish(view: View, finish: Boolean) {
+    val ctx = view.context
+    if (ctx is Activity && finish) {
+        view.setOnClickListener { ctx.finish() }
+    }
+}
+
+@BindingAdapter("bindClick")
+fun bindingClick(view: View, model: PokemonListModel) {
+    view.setOnClickListener {
+        DetailActivity.jumpAcrtivity(
+            view.context,
+            model
+        )
+    }
+}

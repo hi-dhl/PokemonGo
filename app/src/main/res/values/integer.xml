@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="progress_animate_duration">1000</integer>
+    <integer name="porgress_default_value">40</integer>
+    <integer name="porgress_tpye_rect">0</integer>
+    <integer name="porgress_tpye_circle">1</integer>
+    <integer name="porgress_tpye_round_rect">2</integer>
+</resources>

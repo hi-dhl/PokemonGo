@@ -10,10 +10,6 @@
             type="com.hi.dhl.pokemon.model.PokemonListModel" />
 
         <variable
-            name="pokemonInfoModel"
-            type="com.hi.dhl.pokemon.model.PokemonInfoModel" />
-
-        <variable
             name="viewModel"
             type="com.hi.dhl.pokemon.ui.detail.DetailViewModel" />
 
@@ -31,6 +27,18 @@
             android:background="@color/lightTeal"
             tools:context=".ui.main.MainActivity">
 
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ic_arrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_10dp"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:padding="@dimen/space_3dp"
+                android:src="@drawable/ic_arrow"
+                app:finish="@{true}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/avator"
                 android:layout_width="@dimen/details_img_w_h"
@@ -41,8 +49,7 @@
                 app:bindingAvator="@{pokemonListModel.url}"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:shapeAppearanceOverlay="@style/circleImageView" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/pokemonName"
@@ -60,26 +67,33 @@
                 app:layout_constraintTop_toBottomOf="@+id/avator"
                 tools:text="pokemon" />
 
-            <ProgressBar
+            <com.hi.dhl.jcustomvie.JProgressView
                 android:id="@+id/progressHp"
-                style="@style/progress_horizontal_1"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="18dp"
                 android:layout_marginStart="@dimen/margin_30dp"
                 android:layout_marginTop="@dimen/margin_10dp"
                 android:layout_marginEnd="@dimen/margin_30dp"
-                android:max="@{viewModel._pokemon.maxHp}"
-                android:progress="@{viewModel._pokemon.hp}"
                 android:translationZ="100dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/pokemonName" />
+                app:layout_constraintTop_toBottomOf="@+id/pokemonName"
+                app:maxProgressValue="@{viewModel.pokemon.maxHp}"
+                app:progressValue="@{viewModel.pokemon.hp}"
+                app:progress_animate_duration="@integer/progress_animate_duration"
+                app:progress_color="@color/color_progress_1"
+                app:progress_color_background="@color/color_progress_bg"
+                app:progress_paint_bg_width="@dimen/circle_stroke_width"
+                app:progress_paint_value_width="@dimen/circle_stroke_width"
+                app:progress_text_color="@android:color/black"
+                app:progress_text_size="@dimen/text_size_12sp"
+                app:progress_type="@integer/porgress_tpye_round_rect" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/hp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{viewModel._pokemon.getHpString}"
+                android:text="@{viewModel.pokemon.getHpString}"
                 android:textColor="@android:color/black"
                 android:translationZ="100dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -104,7 +118,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_20dp"
-                android:text="@{viewModel._pokemon.getWeightString}"
+                android:text="@{viewModel.pokemon.getWeightString}"
                 android:textSize="21sp"
                 android:translationZ="100dp"
                 app:layout_constraintEnd_toStartOf="@+id/height"
@@ -129,7 +143,7 @@
                 style="@style/TextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{viewModel._pokemon.getHeightString}"
+                android:text="@{viewModel.pokemon.getHeightString}"
                 android:textSize="21sp"
                 android:translationZ="100dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -174,21 +188,28 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="@dimen/margin_5dp"
                     android:layout_marginBottom="@dimen/margin_5dp"
-                    android:text="@{viewModel._pokemon.getAttackString}"
+                    android:text="@{viewModel.pokemon.getAttackString}"
                     android:textColor="@android:color/black"
                     app:layout_constraintEnd_toEndOf="parent"
                     tools:text="200/1000" />
 
-                <ProgressBar
+
+                <com.hi.dhl.jcustomvie.JProgressView
                     android:id="@+id/porgressAttack"
-                    style="@style/progress_horizontal_2"
                     android:layout_width="match_parent"
                     android:layout_height="18dp"
                     android:layout_below="@+id/labelAttack"
-                    android:max="@{viewModel._pokemon.maxAttack}"
-                    android:progress="@{viewModel._pokemon.attack}"
-                    android:translationZ="100dp" />
-
+                    android:translationZ="100dp"
+                    app:maxProgressValue="@{viewModel.pokemon.maxAttack}"
+                    app:progressValue="@{viewModel.pokemon.attack}"
+                    app:progress_animate_duration="@integer/progress_animate_duration"
+                    app:progress_color="@color/color_progress_2"
+                    app:progress_color_background="@color/color_progress_bg"
+                    app:progress_paint_bg_width="@dimen/circle_stroke_width"
+                    app:progress_paint_value_width="@dimen/circle_stroke_width"
+                    app:progress_text_color="@android:color/black"
+                    app:progress_text_size="@dimen/text_size_12sp"
+                    app:progress_type="@integer/porgress_tpye_round_rect" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/speed"
@@ -208,19 +229,26 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="@dimen/margin_5dp"
                     android:layout_marginBottom="@dimen/margin_5dp"
-                    android:text="@{viewModel._pokemon.getSpeedString}"
+                    android:text="@{viewModel.pokemon.getSpeedString}"
                     android:textColor="@android:color/black"
                     app:layout_constraintEnd_toEndOf="parent"
                     tools:text="200/1000" />
 
-                <ProgressBar
-                    style="@style/progress_horizontal_2"
+                <com.hi.dhl.jcustomvie.JProgressView
                     android:layout_width="match_parent"
                     android:layout_height="18dp"
                     android:layout_below="@+id/speed"
-                    android:max="@{viewModel._pokemon.maxSpeed}"
-                    android:progress="@{viewModel._pokemon.speed}"
-                    android:translationZ="100dp" />
+                    android:translationZ="100dp"
+                    app:maxProgressValue="@{viewModel.pokemon.maxSpeed}"
+                    app:progressValue="@{viewModel.pokemon.speed}"
+                    app:progress_animate_duration="@integer/progress_animate_duration"
+                    app:progress_color="@color/color_progress_3"
+                    app:progress_color_background="@color/color_progress_bg"
+                    app:progress_paint_bg_width="@dimen/circle_stroke_width"
+                    app:progress_paint_value_width="@dimen/circle_stroke_width"
+                    app:progress_text_color="@android:color/black"
+                    app:progress_text_size="@dimen/text_size_12sp"
+                    app:progress_type="@integer/porgress_tpye_round_rect" />
 
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -241,22 +269,28 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="@dimen/margin_5dp"
                     android:layout_marginBottom="@dimen/margin_5dp"
-                    android:text="@{viewModel._pokemon.getExpString}"
+                    android:text="@{viewModel.pokemon.getExpString}"
                     android:textColor="@android:color/black"
                     app:layout_constraintEnd_toEndOf="parent"
                     tools:text="200/1000" />
 
-                <ProgressBar
-                    style="@style/progress_horizontal_2"
+                <com.hi.dhl.jcustomvie.JProgressView
                     android:layout_width="match_parent"
                     android:layout_height="18dp"
                     android:layout_below="@+id/exp"
-                    android:max="@{viewModel._pokemon.maxExp}"
-                    android:progress="@{viewModel._pokemon.exp}"
-                    android:translationZ="100dp" />
+                    android:translationZ="100dp"
+                    app:maxProgressValue="@{viewModel.pokemon.maxExp}"
+                    app:progressValue="@{viewModel.pokemon.exp}"
+                    app:progress_animate_duration="@integer/progress_animate_duration"
+                    app:progress_color="@color/color_progress_4"
+                    app:progress_color_background="@color/color_progress_bg"
+                    app:progress_paint_bg_width="@dimen/circle_stroke_width"
+                    app:progress_paint_value_width="@dimen/circle_stroke_width"
+                    app:progress_text_color="@android:color/black"
+                    app:progress_text_size="@dimen/text_size_12sp"
+                    app:progress_type="@integer/porgress_tpye_round_rect" />
             </RelativeLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
 
 </layout>

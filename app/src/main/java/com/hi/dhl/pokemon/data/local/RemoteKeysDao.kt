@@ -20,8 +20,8 @@ interface RemoteKeysDao {
     suspend fun insertAll(remoteKeyEntity: RemoteKeysEntity)
 
     @Query("SELECT * FROM RemoteKeysEntity where remoteName = :name ")
-    suspend fun getRemoteKeys(name: String): RemoteKeysEntity
+    suspend fun getRemoteKeys(name: String): RemoteKeysEntity?
 
-    @Query("DELETE FROM RemoteKeysEntity")
-    suspend fun clearRemoteKeys()
+    @Query("DELETE FROM RemoteKeysEntity where remoteName = :name")
+    suspend fun clearRemoteKeys(name: String)
 }

@@ -12,6 +12,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:bindClick="@{pokemon}"
         app:cardUseCompatPadding="true">
 
         <LinearLayout
@@ -22,13 +23,14 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <ImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/avator"
                 android:layout_width="@dimen/recycle_item_avrtor"
                 android:layout_height="@dimen/recycle_item_avrtor"
-                android:layout_marginTop="@dimen/recycle_item_base_margin" />
+                android:layout_marginTop="@dimen/recycle_item_base_margin"
+                app:bindingAvator="@{pokemon.url}" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -15,8 +15,10 @@ import kotlinx.android.parcel.Parcelize
 
 @Entity
 data class PokemonEntity(
-    @PrimaryKey(autoGenerate = true)
     var pokemonId: Int = 0,
+    val page: Int = 0,
+    @PrimaryKey
     val name: String,
-    val url: String
+    val url: String,
+    val remoteName: String
 )

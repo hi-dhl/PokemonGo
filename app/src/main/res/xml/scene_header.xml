@@ -43,7 +43,7 @@
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="15dp"
             android:layout_marginEnd="8dp"
             motion:layout_constraintBottom_toTopOf="@+id/name"
             motion:layout_constraintEnd_toEndOf="parent"
@@ -52,7 +52,7 @@
             motion:layout_constraintTop_toTopOf="parent"
             motion:layout_constraintVertical_bias="0.24000001"
             motion:layout_constraintVertical_chainStyle="packed"
-            motion:srcCompat="@mipmap/ic_launcher" />
+            motion:srcCompat="@mipmap/ic_launcher_round" />
 
         <Constraint
             android:id="@id/textView"

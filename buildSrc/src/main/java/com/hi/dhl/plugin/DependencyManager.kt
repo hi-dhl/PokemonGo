@@ -16,7 +16,7 @@ object Versions {
     val appcompat = "1.1.0"
     val coreKtx = "1.3.0"
     val constraintlayout = "2.0.0-beta3"
-    val paging = "3.0.0-alpha01"
+    val paging = "3.0.0-alpha02"
     val timber = "4.7.1"
     val kotlin = "1.3.72"
     val koin = "2.1.5"

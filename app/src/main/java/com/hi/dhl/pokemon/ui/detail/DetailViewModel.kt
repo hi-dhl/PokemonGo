@@ -26,8 +26,9 @@ class DetailViewModel @ViewModelInject constructor(
     val polemonRepository: Repository
 ) : ViewModel() {
     val mLoading = ObservableBoolean()
-    private val pokemon = MutableLiveData<PokemonInfoModel>()
-    val _pokemon: LiveData<PokemonInfoModel> = pokemon
+
+    private val _pokemon = MutableLiveData<PokemonInfoModel>()
+    val pokemon: LiveData<PokemonInfoModel> = _pokemon
 
     @OptIn(ExperimentalCoroutinesApi::class)
     fun fectchPokemonInfo(name: String) = liveData<PokemonInfoModel> {
@@ -36,12 +37,11 @@ class DetailViewModel @ViewModelInject constructor(
                 mLoading.set(true)
             }
             .catch {
-                Timber.tag(TAG).e(it)
                 mLoading.set(false)
             }
             .onCompletion { mLoading.set(false) }
             .collectLatest {
-                pokemon.postValue(it)
+                _pokemon.postValue(it)
                 emit(it)
             }
     }

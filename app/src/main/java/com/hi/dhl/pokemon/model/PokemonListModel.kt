@@ -24,7 +24,7 @@ data class PokemonListModel(
                 oldItem: PokemonListModel,
                 newItem: PokemonListModel
             ): Boolean =
-                oldItem.id == newItem.id
+                oldItem == newItem
 
             override fun areContentsTheSame(
                 oldItem: PokemonListModel,

@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.paging.LoadState
 import androidx.paging.LoadStateAdapter
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.hi.dhl.pokemon.R
 import com.hi.dhl.pokemon.ui.main.PokemonAdapter
 
@@ -18,6 +19,10 @@ import com.hi.dhl.pokemon.ui.main.PokemonAdapter
  */
 class FooterAdapter(val adapter: PokemonAdapter) : LoadStateAdapter<NetworkStateItemViewHolder>() {
     override fun onBindViewHolder(holder: NetworkStateItemViewHolder, loadState: LoadState) {
+        val params = holder.itemView.layoutParams
+        if (params is StaggeredGridLayoutManager.LayoutParams) {
+            params.isFullSpan = true
+        }
         holder.bindData(loadState, 0)
     }
 

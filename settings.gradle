@@ -1,2 +1,4 @@
 include ':app'
 rootProject.name = "PokemonGo"
+include ':jcustomview'
+project(':jcustomview').projectDir = new File('../JCustomView/jcustomview')
