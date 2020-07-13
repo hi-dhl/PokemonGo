@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.hi.dhl.utils.CollapsibleToolbar xmlns:android="http://schemas.android.com/apk/res/android"
+<!--
+  ~ Copyright 2020. hi-dhl (Jack Deng)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<com.hi.dhl.pokemon.utils.CollapsibleToolbar xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/constraintToolbar"
@@ -21,7 +37,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.38"
-        app:srcCompat="@drawable/rounded_bottom_border_red" />
+        app:srcCompat="@drawable/main_head_bg_round" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/name"
@@ -31,7 +47,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:text="@string/app_name"
-        android:textColor="@color/text"
+        android:textColor="@color/color_white"
         android:textSize="36sp"
         android:textStyle="bold"
         app:autoSizeTextType="uniform"
@@ -56,7 +72,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.24000001"
         app:layout_constraintVertical_chainStyle="packed"
-        app:shapeAppearanceOverlay="@style/circleImageView"
+        app:shapeAppearanceOverlay="@style/CircleImageView"
         app:srcCompat="@mipmap/ic_launcher_round" />
 
     <TextView
@@ -66,7 +82,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:textColor="@color/text"
+        android:textColor="@color/color_white"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -75,4 +91,4 @@
         app:layout_constraintTop_toBottomOf="@+id/name" />
 
 
-</com.hi.dhl.utils.CollapsibleToolbar>
+</com.hi.dhl.pokemon.utils.CollapsibleToolbar>

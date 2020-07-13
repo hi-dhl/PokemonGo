@@ -14,14 +14,10 @@
  * limitations under the License.
  */
 
-package com.hi.dhl.pokemon.data.remote
+package com.hi.dhl.pokemon.data.mapper
 
-import com.hi.dhl.pokemon.data.entity.ListingResponse
-import com.hi.dhl.pokemon.data.entity.NetWorkPokemonInfo
-import kotlinx.coroutines.flow.Flow
-import retrofit2.http.GET
-import retrofit2.http.Path
-import retrofit2.http.Query
+import com.hi.dhl.pokemon.data.entity.PokemonInfoEntity
+import com.hi.dhl.pokemon.model.PokemonInfoModel
 
 /**
  * <pre>
@@ -30,13 +26,17 @@ import retrofit2.http.Query
  *     desc  :
  * </pre>
  */
-interface PokemonService {
-    @GET("pokemon")
-    suspend fun fetchPokemonList(
-        @Query("limit") limit: Int = 20,
-        @Query("offset") offset: Int = 0
-    ): ListingResponse
+class InfoEntity2InfoModelMapper : Mapper<PokemonInfoEntity, PokemonInfoModel> {
 
-    @GET("pokemon/{name}")
-    suspend fun fetchPokemonInfo(@Path("name") name: String): NetWorkPokemonInfo
+    override fun map(input: PokemonInfoEntity): PokemonInfoModel {
+
+        return PokemonInfoModel(
+            input.name,
+            input.height,
+            input.weight,
+            input.experience
+        )
+    }
+
+
 }

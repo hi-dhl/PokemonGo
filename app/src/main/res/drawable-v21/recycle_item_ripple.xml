@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ Copyright 2020. hi-dhl (Jack Deng)
   ~
@@ -14,9 +15,13 @@
   ~ limitations under the License.
   -->
 
-<resources>
-    <string name="app_name">PokemonGo</string>
-    <string name="footer_retary">重试</string>
-    <string name="weight">Weight</string>
-    <string name="height">Height</string>
-</resources>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/recycle_item_press">
+    <item android:id="@android:id/mask">
+        <inset xmlns:android="http://schemas.android.com/apk/res/android">
+            <shape android:shape="rectangle">
+                <solid android:color="@android:color/white" />
+            </shape>
+        </inset>
+    </item>
+</ripple>

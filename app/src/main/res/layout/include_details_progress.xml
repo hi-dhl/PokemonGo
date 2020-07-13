@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2020. hi-dhl (Jack Deng)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.hi.dhl.pokemon.ui.detail.DetailViewModel" />
+
+    </data>
+
+    <merge>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_30dp"
+            android:layout_marginTop="@dimen/margin_60dp"
+            android:layout_marginEnd="@dimen/margin_30dp"
+            android:orientation="vertical"
+            android:translationZ="100dp"
+            app:layout_constraintTop_toBottomOf="@+id/labelHeight">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/attack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_5dp"
+                android:layout_marginBottom="@dimen/margin_5dp"
+                android:text="ATK"
+                android:textColor="@android:color/black" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/attack"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/margin_5dp"
+                android:layout_marginBottom="@dimen/margin_5dp"
+                android:text="@{viewModel.pokemon.getAttackString}"
+                android:textColor="@android:color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="200/1000" />
+
+
+            <com.hi.dhl.jprogressview.JProgressView
+                android:layout_width="match_parent"
+                android:layout_height="18dp"
+                android:layout_below="@+id/attack"
+                android:translationZ="100dp"
+                app:bindProgressMaxValue="@{viewModel.pokemon.maxAttack}"
+                app:bindProgressValue="@{viewModel.pokemon.attack}"
+                app:progress_animate_duration="@integer/progress_animate_duration"
+                app:progress_color="@color/color_progress_2"
+                app:progress_color_background="@color/color_progress_bg"
+                app:progress_paint_bg_width="@dimen/progress_paint_bg_width"
+                app:progress_paint_value_width="@dimen/progress_paint_bg_width"
+                app:progress_text_color="@android:color/black"
+                app:progress_text_size="@dimen/text_size_12sp"
+                app:progress_type="@integer/porgress_tpye_round_rect" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/speed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/attack"
+                android:layout_marginStart="@dimen/margin_5dp"
+                android:layout_marginTop="@dimen/margin_30dp"
+                android:layout_marginBottom="@dimen/margin_5dp"
+                android:text="SPEED"
+                android:textColor="@android:color/black" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/speed"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/margin_5dp"
+                android:layout_marginBottom="@dimen/margin_5dp"
+                android:text="@{viewModel.pokemon.getSpeedString}"
+                android:textColor="@android:color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="200/1000" />
+
+            <com.hi.dhl.jprogressview.JProgressView
+                android:layout_width="match_parent"
+                android:layout_height="18dp"
+                android:layout_below="@+id/speed"
+                android:translationZ="100dp"
+                app:bindProgressMaxValue="@{viewModel.pokemon.maxSpeed}"
+                app:bindProgressValue="@{viewModel.pokemon.speed}"
+                app:progress_animate_duration="@integer/progress_animate_duration"
+                app:progress_color="@color/color_progress_3"
+                app:progress_color_background="@color/color_progress_bg"
+                app:progress_paint_bg_width="@dimen/progress_paint_bg_width"
+                app:progress_paint_value_width="@dimen/progress_paint_bg_width"
+                app:progress_text_color="@android:color/black"
+                app:progress_text_size="@dimen/text_size_12sp"
+                app:progress_type="@integer/porgress_tpye_round_rect" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/exp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/speed"
+                android:layout_marginStart="@dimen/margin_5dp"
+                android:layout_marginTop="@dimen/margin_40dp"
+                android:layout_marginBottom="@dimen/margin_5dp"
+                android:text="EXP"
+                android:textColor="@android:color/black" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/exp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/margin_5dp"
+                android:layout_marginBottom="@dimen/margin_5dp"
+                android:text="@{viewModel.pokemon.getExpString}"
+                android:textColor="@android:color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="200/1000" />
+
+            <com.hi.dhl.jprogressview.JProgressView
+                android:layout_width="match_parent"
+                android:layout_height="18dp"
+                android:layout_below="@+id/exp"
+                android:translationZ="100dp"
+                app:bindProgressMaxValue="@{viewModel.pokemon.maxExp}"
+                app:bindProgressValue="@{viewModel.pokemon.exp}"
+                app:progress_animate_duration="@integer/progress_animate_duration"
+                app:progress_color="@color/color_progress_4"
+                app:progress_color_background="@color/color_progress_bg"
+                app:progress_paint_bg_width="@dimen/progress_paint_bg_width"
+                app:progress_paint_value_width="@dimen/progress_paint_bg_width"
+                app:progress_text_color="@android:color/black"
+                app:progress_text_size="@dimen/text_size_12sp"
+                app:progress_type="@integer/porgress_tpye_round_rect" />
+        </RelativeLayout>
+    </merge>
+</layout>

@@ -14,11 +14,10 @@
  * limitations under the License.
  */
 
-package com.hi.dhl.pokemon.data.entity
+package com.hi.dhl.pokemon.model
 
 import android.os.Parcelable
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.recyclerview.widget.DiffUtil
 import kotlinx.android.parcel.Parcelize
 
 /**
@@ -29,12 +28,24 @@ import kotlinx.android.parcel.Parcelize
  * </pre>
  */
 
-@Entity
-data class PokemonEntity(
-    @PrimaryKey
+@Parcelize
+data class PokemonItemModel(
     val name: String,
-    var pokemonId: Int = 0,
-    val page: Int = 0,
-    val url: String,
-    val remoteName: String
-)
+    val url: String
+) : Parcelable {
+    companion object {
+        val diffCallback = object : DiffUtil.ItemCallback<PokemonItemModel>() {
+            override fun areItemsTheSame(
+                oldItem: PokemonItemModel,
+                newItem: PokemonItemModel
+            ): Boolean =
+                oldItem.name == newItem.name
+
+            override fun areContentsTheSame(
+                oldItem: PokemonItemModel,
+                newItem: PokemonItemModel
+            ): Boolean =
+                oldItem == newItem
+        }
+    }
+}
