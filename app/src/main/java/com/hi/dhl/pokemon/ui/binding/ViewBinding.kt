@@ -6,7 +6,7 @@ import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import coil.api.load
-import com.hi.dhl.jcustomvie.JProgressView
+import com.hi.dhl.jprogressview.JProgressView
 import com.hi.dhl.pokemon.R
 import com.hi.dhl.pokemon.model.PokemonListModel
 import com.hi.dhl.pokemon.ui.detail.DetailActivity

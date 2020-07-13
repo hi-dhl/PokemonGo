@@ -25,4 +25,4 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
-// ./gradlew dependencyUpdates -Drevision=release
+// ./gradlew dependencyUpdates

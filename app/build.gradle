@@ -84,8 +84,7 @@ dependencies {
     kapt Hilt.compiler
 
     implementation Depend.jDatabinding
-//    implementation Depend.jCustomView
-    implementation project(":jcustomview")
+    implementation Depend.progressview
 
     testImplementation Depend.junit
     androidTestImplementation Depend.androidTestJunit
