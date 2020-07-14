@@ -25,7 +25,6 @@
 ### 项目 PokemonGo 涉及到的技术
 
 * [Gradle Versions Plugin](https://github.com/ben-manes/gradle-versions-plugin)：检查依赖库是否存在最新版本
-* Minimum SDK >= 26
 * [Kotlin](https://kotlinlang.org/) + [Coroutines](https://github.com/Kotlin/kotlinx.coroutines) + [Flow](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/-flow/)：flow 是对 Kotlin 协程的扩展，让我们可以像运行同步代码一样运行异步代码
 * JetPack
     * Paging3（network + db）：用到了 Paging3 中的  `MediatorResult` 用来实现 network + db
@@ -37,15 +36,14 @@
     * ViewModel：以注重生命周期的方式管理界面相关的数据
     * Andriod KTX：编写更简洁、惯用的 Kotlin 代码
 * 项目架构
-    * MVVM 架构（View - DataBinding - ViewModel - Model）
+    * MVVM 架构
     * Repository 设计模式
-    * Data Mapper 数据映射
-* [Material-Components](https://github.com/material-components/material-components-android)
-* [Motionlayout](https://developer.android.com/training/constraint-layout/motionlayout) ：MotionLayout 是一种布局类型，可帮助您管理应用中的动画
+    * Data Mapper 数据映射 
 * [Retrofit2 & OkHttp3](https://github.com/square/retrofit)：用于请求网路数据
 * [Coil](https://github.com/coil-kt/coil/)：基于 Kotlin 开发的首个图片加载库
+* [material-components-android](https://github.com/material-components/material-components-android)：模块化和可定制的材料设计 UI 组件
+* [Motionlayout](https://developer.android.com/training/constraint-layout/motionlayout) ：MotionLayout 是一种布局类型，可帮助您管理应用中的动画
 * [Timber](https://github.com/JakeWharton/timber): 日志打印
-* [JDataBinding](https://github.com/hi-dhl/JDataBinding)：基于 DataBinding 封装的基础组件库
 * [JProgressView](https://github.com/hi-dhl/JProgressView) ：一个小巧灵活可定制的进度条，支持图形：圆形、圆角矩形、矩形等等
 
 **以上技术栈对应之前写的技术文章：**
@@ -96,6 +94,7 @@ Gradle release-candidate updates:
 * 支持 buildSrc 方式管理依赖库最新版本检查
 * 支持 gradle-wrapper 最新版本检查
 * 支持多模块的依赖库最新版本检查
+* 支持多项目的依赖库最新版本检查
     
 ## MVVM 架构
 
@@ -105,10 +104,11 @@ PokemonGo 基于  MVVM 架构和 Repository 设计模式，如今几乎所有的
 <img src="http://cdn.51git.cn/2020-07-12-159453363449491.jpg"/> 
 </p>
 
-Jetpack 的视图模型的 MVVM 架构由 View + DataBinding + ViewModel + Model 组成。**如果这个仓库对你有帮助，请仓库右上角帮我 star 一下，非常感谢。**
+Jetpack 的视图模型的 MVVM 架构由 View + DataBinding + ViewModel + Model 组成。
+
+**如果这个仓库对你有帮助，请仓库右上角帮我 star 一下，非常感谢。**
 
 ## 结语
-
 
 致力于分享一系列 Android 系统源码、逆向分析、算法、翻译、Jetpack 源码相关的文章，关注我来一起学习，在技术的道路上一起前进，另外我还在维护其他项目 [Android10-Source-Analysis](https://github.com/hi-dhl/Android10-Source-Analysis)、[Leetcode-Solutions-with-Java-And-Kotlin](https://github.com/hi-dhl/Leetcode-Solutions-with-Java-And-Kotlin) 、[Technical-Article-Translation](https://github.com/hi-dhl/Technical-Article-Translation) 、 [AndroidX-Jetpack-Practice](https://github.com/hi-dhl/AndroidX-Jetpack-Practice) 可以前去查看。
 
