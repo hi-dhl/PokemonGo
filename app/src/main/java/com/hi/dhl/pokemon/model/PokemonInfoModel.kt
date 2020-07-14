@@ -37,22 +37,21 @@ data class PokemonInfoModel(
     val exp: Int = Random.nextInt(maxExp)
 ) {
 
-    fun getWeightString(): String = String.format("%.1f KG", weight.toFloat() / 10)
-    fun getHeightString(): String = String.format("%.1f M", height.toFloat() / 10)
-    fun getHpString(): String = "$hp/$maxHp HP"
-    fun getAttackString(): String = "$attack/$maxAttack"
-    fun getSpeedString(): String = "$speed/$maxSpeed"
-    fun getExpString(): String = "$exp/$maxExp"
+    fun generatetWeight(): String = "%.1f KG".format(weight.toFloat() / 10)
+    fun generateHeight(): String = "%.1f M".format(height.toFloat() / 10)
+    fun generatetHP(): String = "$hp/$maxHp HP"
+    fun generatetAttack(): String = "$attack/$maxAttack"
+    fun generatetSpeed(): String = "$speed/$maxSpeed"
+    fun generatetExp(): String = "$exp/$maxExp"
 
     override fun toString(): String {
         return "PokemonInfoModel(name='$name', height=$height, weight=$weight, experience=$experience)"
     }
 
     companion object {
-        const val maxHp = 300
-        const val maxAttack = 300
-        const val maxDefense = 300
-        const val maxSpeed = 300
-        const val maxExp = 1000
+        const val maxHp = 500
+        const val maxAttack = 600
+        const val maxSpeed = 400
+        const val maxExp = 800
     }
 }

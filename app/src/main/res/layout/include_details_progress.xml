@@ -55,7 +55,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="@dimen/margin_5dp"
                 android:layout_marginBottom="@dimen/margin_5dp"
-                android:text="@{viewModel.pokemon.getAttackString}"
+                android:text="@{viewModel.pokemon.generatetAttack}"
                 android:textColor="@android:color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 tools:text="200/1000" />
@@ -95,7 +95,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="@dimen/margin_5dp"
                 android:layout_marginBottom="@dimen/margin_5dp"
-                android:text="@{viewModel.pokemon.getSpeedString}"
+                android:text="@{viewModel.pokemon.generatetSpeed}"
                 android:textColor="@android:color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 tools:text="200/1000" />
@@ -135,7 +135,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="@dimen/margin_5dp"
                 android:layout_marginBottom="@dimen/margin_5dp"
-                android:text="@{viewModel.pokemon.getExpString}"
+                android:text="@{viewModel.pokemon.generatetExp}"
                 android:textColor="@android:color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 tools:text="200/1000" />
