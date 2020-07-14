@@ -14,11 +14,13 @@
 <img src="http://cdn.51git.cn/2020-07-14-Pokemon.png"/> 
 </p>
 
-<p align="center"> PokemonGo 动态效果图如下所示，如果动图无法查看，请点击这里查看 <a href="http://cdn.51git.cn/2020-07-12-15945313937044.gif"> 动态效果图</a> &nbsp; <a href="http://cdn.51git.cn/2020-07-14-Pokemon.png"> 静态图</a></p>
+<p align="center"> PokemonGo 动态效果图如下所示，如果动图无法查看，请点击这里查看 <a href="http://cdn.51git.cn/2020-07-14-15946978385391.gif"> 动态效果图</a> | <a href="http://cdn.51git.cn/2020-07-14-Pokemon.png"> 静态图</a></p>
 
 <p align="center">
 <img src="http://cdn.51git.cn/2020-07-12-15945313937044.gif" height = 500/> 
 </p>
+
+关于 PokemonGo 项目分析的文章请查看 [神奇宝贝 眼前一亮的 Jetpack + MVVM 极简实战](https://juejin.im/post/5f0d303e6fb9a07e76550d4c)
 
 ### 项目 PokemonGo 涉及到的技术
 
@@ -61,6 +63,40 @@
 * [为数不多的人知道的 Kotlin 技巧以及 原理解析(二)](https://juejin.im/post/5f0747486fb9a07ea86dc881)
 
 
+## 如何检查依赖库的版本更新
+
+在项目的根目录下执行以下命令。
+
+```
+./gradlew dependencyUpdates
+```
+    
+会在当前目录下生成 build/dependencyUpdates/report.txt 文件，内容如下所示：
+
+```
+The following dependencies have later release versions:
+ - androidx.swiperefreshlayout:swiperefreshlayout [1.0.0 -> 1.1.0]
+     https://developer.android.com/jetpack/androidx
+ - com.squareup.okhttp3:logging-interceptor [3.9.0 -> 4.7.2]
+     https://square.github.io/okhttp/
+ - junit:junit [4.12 -> 4.13]
+     http://junit.org
+ - org.koin:koin-android [2.1.5 -> 2.1.6]
+ - org.koin:koin-androidx-viewmodel [2.1.5 -> 2.1.6]
+ - org.koin:koin-core [2.1.5 -> 2.1.6]
+
+Gradle release-candidate updates:
+ - Gradle: [6.1.1 -> 6.5.1]
+```
+
+会列出所有需要更新的依赖库的最新版本，并且 Gradle Versions Plugin 比 AndroidStudio 所支持的更加全面：
+
+* 支持手动方式管理依赖库最新版本检查
+* 支持 ext 的方式管理依赖库最新版本检查
+* 支持 buildSrc 方式管理依赖库最新版本检查
+* 支持 gradle-wrapper 最新版本检查
+* 支持多模块的依赖库最新版本检查
+    
 ## MVVM 架构
 
 PokemonGo 基于  MVVM 架构和 Repository 设计模式，如今几乎所有的 Android 开发者至少都听过 MVVM 架构，在谷歌 Android 团队宣布了 Jetpack 的视图模型之后，它已经成为了现代 Android 开发模式最流行的架构之一。
@@ -69,11 +105,10 @@ PokemonGo 基于  MVVM 架构和 Repository 设计模式，如今几乎所有的
 <img src="http://cdn.51git.cn/2020-07-12-159453363449491.jpg"/> 
 </p>
 
-Jetpack 的视图模型的 MVVM 架构由 View + DataBinding + ViewModel + Model 组成。
+Jetpack 的视图模型的 MVVM 架构由 View + DataBinding + ViewModel + Model 组成。**如果这个仓库对你有帮助，请仓库右上角帮我 star 一下，非常感谢。**
 
 ## 结语
 
-如果这个仓库对你有帮助，请仓库右上角帮我 star 一下，非常感谢。
 
 致力于分享一系列 Android 系统源码、逆向分析、算法、翻译、Jetpack 源码相关的文章，关注我来一起学习，在技术的道路上一起前进，另外我还在维护其他项目 [Android10-Source-Analysis](https://github.com/hi-dhl/Android10-Source-Analysis)、[Leetcode-Solutions-with-Java-And-Kotlin](https://github.com/hi-dhl/Leetcode-Solutions-with-Java-And-Kotlin) 、[Technical-Article-Translation](https://github.com/hi-dhl/Technical-Article-Translation) 、 [AndroidX-Jetpack-Practice](https://github.com/hi-dhl/AndroidX-Jetpack-Practice) 可以前去查看。
 
