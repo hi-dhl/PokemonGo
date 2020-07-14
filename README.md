@@ -11,10 +11,10 @@
 </p>
 
 <p align="center">
-<img src="http://cdn.51git.cn/2020-07-14-Pokemon.png"/> 
+<img src="http://cdn.51git.cn/2020-07-14-PokemonGo2.png"/> 
 </p>
 
-<p align="center"> PokemonGo 动态效果图如下所示，如果动图无法查看，请点击这里查看 <a href="http://cdn.51git.cn/2020-07-14-15946978385391.gif"> 动态效果图</a> | <a href="http://cdn.51git.cn/2020-07-14-Pokemon.png"> 静态图</a></p>
+<p align="center"> PokemonGo 动态效果图如下所示，如果动图无法查看，请点击这里查看 <a href="http://cdn.51git.cn/2020-07-14-15946978385391.gif"> 动态效果图</a> | <a href="http://cdn.51git.cn/2020-07-14-PokemonGo2.png"> 静态图</a></p>
 
 <p align="center">
 <img src="http://cdn.51git.cn/2020-07-12-15945313937044.gif" height = 500/> 
