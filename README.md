@@ -17,7 +17,7 @@
 <p align="center"> PokemonGo 动态效果图如下所示，如果动图无法查看，请点击这里查看 <a href="http://cdn.51git.cn/2020-07-14-15946978385391.gif"> 动态效果图</a> | <a href="http://cdn.51git.cn/2020-07-14-PokemonGo2.png"> 静态图</a></p>
 
 <p align="center">
-<img src="https://user-gold-cdn.xitu.io/2020/7/14/1734bbcd78651bb8?imageslim"/> 
+<img src="http://cdn.51git.cn/2020-07-14-15947367840380.gif"/> 
 </p>
 
 关于 PokemonGo 项目分析的文章请查看 [神奇宝贝 眼前一亮的 Jetpack + MVVM 极简实战](https://juejin.im/post/5f0d303e6fb9a07e76550d4c)
