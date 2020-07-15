@@ -1,5 +1,5 @@
-# <p align="center"> PokemonGo <img src='http://cdn.51git.cn/2020-07-15-25-3.png'></p>
- 
+# <p align="center"> PokemonGo <img src='http://cdn.51git.cn/2020-07-15-34.png'></p>
+
 <p align="center"> Jetpack 实战项目 PokemonGo（神奇宝贝）基于 MVVM 架构和 Repository 设计模式 </p>
 
 <p align="center">
@@ -20,12 +20,26 @@
 <img src="http://cdn.51git.cn/2020-07-14-15947367840380.gif"/> 
 </p>
 
+### PokemonGo 包含了以下功能
+
+1. 自定义 MediatorResult 实现 network + db 的混合使用 ( MediatorResult 是 Paging3 当中重要成员 )
+2. 使用 Data Mapper 分离数据源 和 UI
+3. Kotlin Flow 结合  Retrofit2 + room 的混合使用
+4. Kotlin Flow 与 LiveData 的使用
+5. 使用 Coil 加载图片
+6. 使用 ViewModel、LiveData、DataBinding 协同工作
+7. 使用 Motionlayout 做动画
+8. App Startup 与 Hilt 的使用
+9. ......
+
 关于 PokemonGo 项目分析的文章请查看 [神奇宝贝 眼前一亮的 Jetpack + MVVM 极简实战](https://juejin.im/post/5f0d303e6fb9a07e76550d4c)
+
+**如果这个仓库对你有帮助，请仓库右上角帮我 star 一下，非常感谢。**
 
 ### 项目 PokemonGo 涉及到的技术
 
 * [Gradle Versions Plugin](https://github.com/ben-manes/gradle-versions-plugin)：检查依赖库是否存在最新版本
-* [Kotlin](https://kotlinlang.org/) + [Coroutines](https://github.com/Kotlin/kotlinx.coroutines) + [Flow](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/-flow/)：flow 是对 Kotlin 协程的扩展，让我们可以像运行同步代码一样运行异步代码
+* [Kotlin](https://kotlinlang.org/) + [Flow](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/-flow/)：flow 是对 Kotlin 协程的扩展，让我们可以像运行同步代码一样运行异步代码
 * JetPack
     * Paging3（network + db）：用到了 Paging3 中的  `MediatorResult` 用来实现 network + db
     * Dagger-Hilt (2.28-alpha)：依赖注入框架
@@ -105,8 +119,6 @@ PokemonGo 基于  MVVM 架构和 Repository 设计模式，如今几乎所有的
 </p>
 
 Jetpack 的视图模型的 MVVM 架构由 View + DataBinding + ViewModel + Model 组成。
-
-**如果这个仓库对你有帮助，请仓库右上角帮我 star 一下，非常感谢。**
 
 ## 结语
 
