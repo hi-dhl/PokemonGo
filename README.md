@@ -1,5 +1,5 @@
-# <p align="center"> PokemonGo </p>
-
+# <p align="center"> PokemonGo <img src='http://cdn.51git.cn/2020-07-15-25-3.png'></p>
+ 
 <p align="center"> Jetpack 实战项目 PokemonGo（神奇宝贝）基于 MVVM 架构和 Repository 设计模式 </p>
 
 <p align="center">
