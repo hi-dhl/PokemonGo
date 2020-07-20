@@ -24,7 +24,7 @@
 
 1. 自定义 MediatorResult 实现 network + db 的混合使用 ( MediatorResult 是 Paging3 当中重要成员 )
 2. 使用 Data Mapper 分离数据源 和 UI
-3. Kotlin Flow 结合  Retrofit2 + room 的混合使用
+3. Kotlin Flow 结合  Retrofit2 + Room 的混合使用
 4. Kotlin Flow 与 LiveData 的使用
 5. 使用 Coil 加载图片
 6. 使用 ViewModel、LiveData、DataBinding 协同工作

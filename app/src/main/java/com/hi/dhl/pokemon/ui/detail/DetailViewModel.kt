@@ -18,10 +18,7 @@ package com.hi.dhl.pokemon.ui.detail
 
 import androidx.databinding.ObservableBoolean
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.liveData
+import androidx.lifecycle.*
 import com.hi.dhl.pokemon.data.repository.Repository
 import com.hi.dhl.pokemon.model.PokemonInfoModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -29,6 +26,7 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
+import kotlinx.coroutines.launch
 import timber.log.Timber
 
 /**
@@ -43,24 +41,78 @@ class DetailViewModel @ViewModelInject constructor(
 ) : ViewModel() {
     val mLoading = ObservableBoolean()
 
+    // 私有的 MutableLiveData 可变的，对内访问
     private val _pokemon = MutableLiveData<PokemonInfoModel>()
+
+    // 对外暴露不可变的 LiveData，只能查询
     val pokemon: LiveData<PokemonInfoModel> = _pokemon
 
+    /**
+     * 方法二
+     */
     @OptIn(ExperimentalCoroutinesApi::class)
-    fun fectchPokemonInfo(name: String) = liveData<PokemonInfoModel> {
+    fun fectchPokemonInfo2(name: String) = liveData<PokemonInfoModel> {
         polemonRepository.featchPokemonInfo(name)
             .onStart {
+                // 在调用 flow 请求数据之前，做一些准备工作，例如显示正在加载数据的按钮
                 mLoading.set(true)
             }
             .catch {
+                // 捕获上游出现的异常
                 mLoading.set(false)
             }
-            .onCompletion { mLoading.set(false) }
+            .onCompletion {
+                // 请求完成
+                mLoading.set(false)
+            }
             .collectLatest {
                 _pokemon.postValue(it)
                 emit(it)
             }
     }
+
+    /**
+     * 方法三
+     */
+    @OptIn(ExperimentalCoroutinesApi::class)
+    suspend fun fectchPokemonInfo3(name: String) =
+        polemonRepository.featchPokemonInfo(name)
+            .onStart {
+                // 在调用 flow 请求数据之前，做一些准备工作，例如显示正在加载数据的按钮
+                mLoading.set(true)
+            }
+            .catch {
+                // 捕获上游出现的异常
+                mLoading.set(false)
+            }
+            .onCompletion {
+                // 请求完成
+                mLoading.set(false)
+            }.asLiveData()
+
+    /**
+     * 方法一
+     */
+    @OptIn(ExperimentalCoroutinesApi::class)
+    fun fectchPokemonInfo1(name: String) = viewModelScope.launch {
+        polemonRepository.featchPokemonInfo(name)
+            .onStart {
+                // 在调用 flow 请求数据之前，做一些准备工作，例如显示正在加载数据的按钮
+                mLoading.set(true)
+            }
+            .catch {
+                // 捕获上游出现的异常
+                mLoading.set(false)
+            }
+            .onCompletion {
+                // 请求完成
+                mLoading.set(false)
+            }
+            .collectLatest {
+                _pokemon.postValue(it)
+            }
+    }
+
 
     companion object {
         private val TAG = "DetailViewModel"

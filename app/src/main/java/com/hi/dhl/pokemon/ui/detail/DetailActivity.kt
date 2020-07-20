@@ -20,11 +20,13 @@ import android.content.Context
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import com.hi.dhl.jdatabinding.DataBindingAppCompatActivity
 import com.hi.dhl.pokemon.R
 import com.hi.dhl.pokemon.databinding.ActivityDetailsBinding
 import com.hi.dhl.pokemon.model.PokemonItemModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import org.jetbrains.anko.startActivity
 
 /**
@@ -49,10 +51,30 @@ class DetailActivity : DataBindingAppCompatActivity() {
             pokemonListModel = mPokemonModel
             lifecycleOwner = this@DetailActivity
             viewModel = mViewModel.apply {
-                fectchPokemonInfo(mPokemonModel.name)
+                fectchPokemonInfo2(mPokemonModel.name)
                     .observe(this@DetailActivity, Observer {})
             }
         }
+
+//        // 方法一
+//        mViewModel.pokemon.observe(this, Observer {
+//            // 将数据显示在页面上
+//        })
+//
+//        // 方法二
+//        mViewModel.fectchPokemonInfo2(mPokemonModel.name).observe(this, Observer {
+//            // 将数据显示在页面上
+//        })
+//
+//        // 方法三
+//        lifecycleScope.launch {
+//            mViewModel.apply {
+//                fectchPokemonInfo3(mPokemonModel.name).observe(this@DetailActivity, Observer {
+//                    // 将数据显示在页面上
+//                })
+//            }
+//        }
+        
     }
 
     companion object {

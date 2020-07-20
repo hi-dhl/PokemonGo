@@ -63,11 +63,12 @@ class PokemonRepositoryImpl(
     override suspend fun featchPokemonInfo(name: String): Flow<PokemonInfoModel> {
         return flow {
             val pokemonDao = db.pokemonInfoDao()
-            var infoModel = pokemonDao.getPokemon(name)
             // 查询数据库是否存在，如果不存在请求网络
+            var infoModel = pokemonDao.getPokemon(name)
             if (infoModel == null) {
                 // 网络请求
                 val netWorkPokemonInfo = api.fetchPokemonInfo(name)
+                // 将网路请求的数据，换转成的数据库的 model，之后插入数据库
                 infoModel = netWorkPokemonInfo.let {
                     PokemonInfoEntity(
                         name = it.name,
@@ -76,11 +77,14 @@ class PokemonRepositoryImpl(
                         experience = it.experience
                     )
                 }
-                pokemonDao.insertPokemon(infoModel) // 插入更新数据库
+                // 插入更新数据库
+                pokemonDao.insertPokemon(infoModel)
             }
-
+            // 将数据源的 model 转换成上层用到的 model，
+            // ui 不能直接持有数据源，防止数据源的变化，影响上层的 ui
             val model = mapper2InfoModel.map(infoModel)
+            // 发射转换后的数据
             emit(model)
-        }.flowOn(Dispatchers.IO)
+        }.flowOn(Dispatchers.IO) // 通过 flowOn 切换到 io 线程
     }
 }
