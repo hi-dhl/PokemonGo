@@ -39,7 +39,7 @@
 ### 项目 PokemonGo 涉及到的技术
 
 * [Gradle Versions Plugin](https://github.com/ben-manes/gradle-versions-plugin)：检查依赖库是否存在最新版本
-* [Kotlin](https://kotlinlang.org/) + [Flow](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/-flow/)：flow 是对 Kotlin 协程的扩展，让我们可以像运行同步代码一样运行异步代码
+* [Kotlin Flow](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/-flow/)：flow 是对 Kotlin 协程的扩展，让我们可以像运行同步代码一样运行异步代码
 * JetPack
     * Paging3（network + db）：用到了 Paging3 中的  `MediatorResult` 用来实现 network + db
     * Dagger-Hilt (2.28-alpha)：依赖注入框架
@@ -119,6 +119,13 @@ PokemonGo 基于  MVVM 架构和 Repository 设计模式，如今几乎所有的
 </p>
 
 Jetpack 的视图模型的 MVVM 架构由 View + DataBinding + ViewModel + Model 组成。
+
+## TODO
+
+* 加入更多 Jetpack 成员
+* 设计更多的实用场景
+* 增加单元测试
+* ......
 
 ## 结语
 
