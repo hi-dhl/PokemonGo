@@ -31,10 +31,10 @@ class InfoEntity2InfoModelMapper : Mapper<PokemonInfoEntity, PokemonInfoModel> {
     override fun map(input: PokemonInfoEntity): PokemonInfoModel {
 
         return PokemonInfoModel(
-            input.name,
-            input.height,
-            input.weight,
-            input.experience
+            name = input.name,
+            height =  input.height,
+            weight = input.weight,
+            experience = input.experience
         )
     }
 

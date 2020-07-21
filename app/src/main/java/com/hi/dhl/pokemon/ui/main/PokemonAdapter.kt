@@ -63,6 +63,7 @@ class PokemonViewModel(view: View) : DataBindingViewHolder<PokemonItemModel>(vie
 
     override fun bindData(data: PokemonItemModel, position: Int) {
         mBinding.apply {
+            data.id = "#${position + 1}"
             pokemon = data
             executePendingBindings()
         }
