@@ -16,29 +16,35 @@
 
 package com.hi.dhl.pokemon.data.local
 
-import androidx.room.Database
-import androidx.room.RoomDatabase
-import androidx.room.TypeConverters
-import com.hi.dhl.pokemon.data.entity.PokemonEntity
+import androidx.room.TypeConverter
+import com.google.gson.GsonBuilder
 import com.hi.dhl.pokemon.data.entity.PokemonInfoEntity
-import com.hi.dhl.pokemon.data.entity.RemoteKeysEntity
+import com.hi.dhl.pokemon.ext.fromJson
+import com.hi.dhl.pokemon.ext.typedToJson
 
 /**
  * <pre>
  *     author: dhl
- *     date  : 2020/7/11
+ *     date  : 2020/7/21
  *     desc  :
  * </pre>
  */
+open class LocalTypeConverter {
 
-@Database(
-    entities = arrayOf(PokemonEntity::class, RemoteKeysEntity::class, PokemonInfoEntity::class),
-    version = 2, exportSchema = false
-)
-@TypeConverters(value = arrayOf(LocalTypeConverter::class))
-abstract class AppDataBase : RoomDatabase() {
+    @TypeConverter
+    fun json2StatsEntity(src: String): List<PokemonInfoEntity.Stats>? =
+        GsonBuilder().create().fromJson(src)
 
-    abstract fun pokemonDao(): PokemonDao
-    abstract fun remoteKeysDao(): RemoteKeysDao
-    abstract fun pokemonInfoDao(): PokemonInfoDao
+    @TypeConverter
+    fun statsEntity2Json(data: List<PokemonInfoEntity.Stats>): String =
+        GsonBuilder().create().typedToJson(data)
+
+    @TypeConverter
+    fun json2TypeEntity(src: String): List<PokemonInfoEntity.Type>? =
+        GsonBuilder().create().fromJson(src)
+
+    @TypeConverter
+    fun typeEntity2Json(data: List<PokemonInfoEntity.Type>): String =
+        GsonBuilder().create().typedToJson(data)
+
 }

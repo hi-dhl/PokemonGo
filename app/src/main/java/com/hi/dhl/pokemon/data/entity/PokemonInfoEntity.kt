@@ -16,6 +16,7 @@
 
 package com.hi.dhl.pokemon.data.entity
 
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -34,6 +35,72 @@ data class PokemonInfoEntity(
     val name: String,
     val height: Int,
     val weight: Int,
-    val experience: Int
-)
+    val experience: Int,
+    val types: List<Type>,
+    val stats: List<Stats>,
+    @Embedded val sprites: Sprites
+) {
+
+    data class Sprites(
+        val backDefault: String,
+        val backFemale: String,
+        val backShiny: String,
+        val backShinyFemale: String,
+        val frontDefault: String,
+        val frontfemale: String,
+        val frontShiny: String,
+        val frontShinyFemale: String
+    )
+
+    data class Type(val name: String, val url: String)
+
+    data class Stats(val baseStat: Int, val name: String, val url: String)
+
+    companion object {
+        fun convert2PokemonInfoEntity(netWorkPokemonInfo: NetWorkPokemonInfo): PokemonInfoEntity {
+            return netWorkPokemonInfo.run {
+
+                val dbTypes = mutableListOf<Type>()
+                val dbStats = mutableListOf<Stats>()
+                val dbSprites = Sprites(
+                    backDefault = sprites.backDefault,
+                    backFemale = sprites.backFemale,
+                    backShiny = sprites.backShiny,
+                    backShinyFemale = sprites.backShinyFemale,
+                    frontDefault = sprites.frontDefault,
+                    frontfemale = sprites.frontfemale,
+                    frontShiny = sprites.frontShiny,
+                    frontShinyFemale = sprites.frontShinyFemale
+                )
+                types.forEach {
+                    dbTypes.add(
+                        Type(
+                            name = it.type.name,
+                            url = it.type.url
+                        )
+                    )
+                }
+                stats.forEach {
+                    dbStats.add(
+                        Stats(
+                            baseStat = it.baseStat,
+                            name = it.stat.name,
+                            url = it.stat.url
+                        )
+                    )
+                }
+
+                PokemonInfoEntity(
+                    name = name,
+                    height = height,
+                    weight = weight,
+                    experience = experience,
+                    types = dbTypes,
+                    stats = dbStats,
+                    sprites = dbSprites
+                )
+            }
+        }
+    }
+}
 

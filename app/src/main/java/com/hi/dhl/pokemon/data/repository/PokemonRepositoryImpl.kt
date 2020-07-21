@@ -19,9 +19,9 @@ package com.hi.dhl.pokemon.data.repository
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.hi.dhl.paging3.data.local.AppDataBase
 import com.hi.dhl.pokemon.data.entity.PokemonEntity
 import com.hi.dhl.pokemon.data.entity.PokemonInfoEntity
+import com.hi.dhl.pokemon.data.local.AppDataBase
 import com.hi.dhl.pokemon.data.mapper.Mapper
 import com.hi.dhl.pokemon.data.remote.PokemonService
 import com.hi.dhl.pokemon.model.PokemonInfoModel
@@ -68,15 +68,9 @@ class PokemonRepositoryImpl(
             if (infoModel == null) {
                 // 网络请求
                 val netWorkPokemonInfo = api.fetchPokemonInfo(name)
+                Timber.tag(TAG).e("-netWorkPokemonInfo- " + netWorkPokemonInfo)
                 // 将网路请求的数据，换转成的数据库的 model，之后插入数据库
-                infoModel = netWorkPokemonInfo.let {
-                    PokemonInfoEntity(
-                        name = it.name,
-                        height = it.height,
-                        weight = it.weight,
-                        experience = it.experience
-                    )
-                }
+                infoModel = PokemonInfoEntity.convert2PokemonInfoEntity(netWorkPokemonInfo)
                 // 插入更新数据库
                 pokemonDao.insertPokemon(infoModel)
             }
@@ -86,5 +80,9 @@ class PokemonRepositoryImpl(
             // 发射转换后的数据
             emit(model)
         }.flowOn(Dispatchers.IO) // 通过 flowOn 切换到 io 线程
+    }
+
+    companion object {
+        private val TAG = "PokemonRepositoryImpl"
     }
 }

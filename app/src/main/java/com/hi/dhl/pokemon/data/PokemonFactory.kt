@@ -17,9 +17,9 @@
 package com.hi.dhl.pokemon.data
 
 import androidx.paging.PagingConfig
-import com.hi.dhl.paging3.data.local.AppDataBase
-import com.hi.dhl.pokemon.data.mapper.InfoEntity2InfoModelMapper
+import com.hi.dhl.pokemon.data.local.AppDataBase
 import com.hi.dhl.pokemon.data.mapper.Entity2ItemModelMapper
+import com.hi.dhl.pokemon.data.mapper.InfoEntity2InfoModelMapper
 import com.hi.dhl.pokemon.data.remote.PokemonService
 import com.hi.dhl.pokemon.data.repository.PokemonRepositoryImpl
 import com.hi.dhl.pokemon.data.repository.Repository

@@ -14,29 +14,26 @@
  * limitations under the License.
  */
 
-package com.hi.dhl.pokemon.data.mapper
+package com.hi.dhl.pokemon.ext
 
-import com.hi.dhl.pokemon.data.entity.PokemonInfoEntity
-import com.hi.dhl.pokemon.model.PokemonInfoModel
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
 /**
  * <pre>
  *     author: dhl
- *     date  : 2020/7/11
+ *     date  : 2020/7/21
  *     desc  :
  * </pre>
  */
-class InfoEntity2InfoModelMapper : Mapper<PokemonInfoEntity, PokemonInfoModel> {
 
-    override fun map(input: PokemonInfoEntity): PokemonInfoModel {
+fun <T> Gson.typedToJson(src: T): String = toJson(src)
 
-        return PokemonInfoModel(
-            name = input.name,
-            height = input.height,
-            weight = input.weight,
-            experience = input.experience
-        )
-    }
+inline fun <reified T : Any> Gson.fromJson(json: String): T =
+    fromJson(json, object : TypeToken<T>() {}.type)
 
-
-}
+//fun <T> T.typedToJson(src: T): String = GsonBuilder().create().typedToJson(src)
+//
+////inline fun <reified T:Any> Gson.fromJson(json:String):T = fromJson(json,object : TypeToken<T>(){}.type)
+//inline fun <reified T : Any> T.fromJson(json: String): T =
+//    GsonBuilder().create().fromJson(json, object : TypeToken<T>() {}.type)

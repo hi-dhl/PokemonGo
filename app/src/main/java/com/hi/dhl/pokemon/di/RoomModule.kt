@@ -18,7 +18,7 @@ package com.hi.dhl.pokemon.di
 
 import android.app.Application
 import androidx.room.Room
-import com.hi.dhl.paging3.data.local.AppDataBase
+import com.hi.dhl.pokemon.data.local.AppDataBase
 import com.hi.dhl.pokemon.data.local.PokemonDao
 import com.hi.dhl.pokemon.data.local.PokemonInfoDao
 import com.hi.dhl.pokemon.data.local.RemoteKeysDao
