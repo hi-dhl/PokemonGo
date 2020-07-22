@@ -16,6 +16,7 @@
 
 package com.hi.dhl.pokemon.model
 
+import androidx.recyclerview.widget.DiffUtil
 import kotlin.random.Random
 
 /**
@@ -30,9 +31,9 @@ data class PokemonInfoModel(
     val height: Int,
     val weight: Int,
     val experience: Int,
-//    val types: List<Types>,
-//    val stats: List<Stats>,
-//    val sprites: Sprites,
+    val types: List<Type>,
+    val stats: List<Stats>,
+    val albums: List<AlbumModel>,
     val hp: Int = Random.nextInt(maxHp),
     val attack: Int = Random.nextInt(maxAttack),
     val speed: Int = Random.nextInt(maxSpeed),
@@ -50,24 +51,27 @@ data class PokemonInfoModel(
         return "PokemonInfoModel(name='$name', height=$height, weight=$weight, experience=$experience)"
     }
 
-    data class Sprites(
-        val backDefault: String,
-        val backFemale: String,
-        val backShiny: String,
-        val backShinyFemale: String,
-        val frontDefault: String,
-        val frontfemale: String,
-        val frontShiny: String,
-        val frontShinyFemale: String
-    )
+    data class AlbumModel(val index: Int, val url: String) {
+        companion object {
+            val diffCallback = object : DiffUtil.ItemCallback<AlbumModel>() {
+                override fun areItemsTheSame(
+                    oldItem: AlbumModel,
+                    newItem: AlbumModel
+                ): Boolean =
+                    oldItem.index == newItem.index
 
-    data class Types(val slot: Int, val type: Type) {
-        data class Type(val name: String, val url: String)
+                override fun areContentsTheSame(
+                    oldItem: AlbumModel,
+                    newItem: AlbumModel
+                ): Boolean =
+                    oldItem == newItem
+            }
+        }
     }
 
-    data class Stats(val baseStat: Int, val stat: Stat) {
-        data class Stat(val name: String, val url: String)
-    }
+    data class Type(val name: String, val url: String)
+
+    data class Stats(val baseStat: Int, val name: String, val url: String)
 
     companion object {
         const val maxHp = 500

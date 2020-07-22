@@ -14,19 +14,23 @@
  * limitations under the License.
  */
 
-package com.hi.dhl.pokemon.ext
+package com.hi.dhl.pokemon.ui.detail
 
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentFactory
 
 /**
  * <pre>
  *     author: dhl
- *     date  : 2020/7/21
+ *     date  : 2020/7/22
  *     desc  :
  * </pre>
  */
+class CustomFragmentFactory() : FragmentFactory() {
 
-fun <T> Gson.typedToJson(src:T):String = toJson(src)
-
-inline fun <reified T:Any> Gson.fromJson(json:String):T = fromJson(json,object : TypeToken<T>(){}.type)
+    override fun instantiate(classLoader: ClassLoader, className: String): Fragment =
+        when (className) {
+            DetailsFragment::class.java.name -> DetailsFragment(DetailsFragment::class.java.simpleName)
+            else -> super.instantiate(classLoader, className)
+        }
+}

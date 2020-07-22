@@ -68,7 +68,7 @@ class PokemonRepositoryImpl(
             if (infoModel == null) {
                 // 网络请求
                 val netWorkPokemonInfo = api.fetchPokemonInfo(name)
-                Timber.tag(TAG).e("-netWorkPokemonInfo- " + netWorkPokemonInfo)
+
                 // 将网路请求的数据，换转成的数据库的 model，之后插入数据库
                 infoModel = PokemonInfoEntity.convert2PokemonInfoEntity(netWorkPokemonInfo)
                 // 插入更新数据库

@@ -19,6 +19,7 @@ package com.hi.dhl.pokemon.data.entity
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.hi.dhl.pokemon.ext.getEmptyOrDefault
 
 /**
  * <pre>
@@ -62,16 +63,7 @@ data class PokemonInfoEntity(
 
                 val dbTypes = mutableListOf<Type>()
                 val dbStats = mutableListOf<Stats>()
-                val dbSprites = Sprites(
-                    backDefault = sprites.backDefault,
-                    backFemale = sprites.backFemale,
-                    backShiny = sprites.backShiny,
-                    backShinyFemale = sprites.backShinyFemale,
-                    frontDefault = sprites.frontDefault,
-                    frontfemale = sprites.frontfemale,
-                    frontShiny = sprites.frontShiny,
-                    frontShinyFemale = sprites.frontShinyFemale
-                )
+
                 types.forEach {
                     dbTypes.add(
                         Type(
@@ -80,6 +72,7 @@ data class PokemonInfoEntity(
                         )
                     )
                 }
+
                 stats.forEach {
                     dbStats.add(
                         Stats(
@@ -89,6 +82,17 @@ data class PokemonInfoEntity(
                         )
                     )
                 }
+
+                val dbSprites = Sprites(
+                    backDefault = sprites.backDefault.getEmptyOrDefault { "" },
+                    backFemale = sprites.backFemale.getEmptyOrDefault { "" },
+                    backShiny = sprites.backShiny.getEmptyOrDefault { "" },
+                    backShinyFemale = sprites.backShinyFemale.getEmptyOrDefault { "" },
+                    frontDefault = sprites.frontDefault.getEmptyOrDefault { "" },
+                    frontfemale = sprites.frontfemale.getEmptyOrDefault { "" },
+                    frontShiny = sprites.frontShiny.getEmptyOrDefault { "" },
+                    frontShinyFemale = sprites.frontShinyFemale.getEmptyOrDefault { "" }
+                )
 
                 PokemonInfoEntity(
                     name = name,

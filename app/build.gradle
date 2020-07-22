@@ -71,9 +71,6 @@ dependencies {
     implementation Room.ktx
     kapt Room.compiler
     implementation Anko.common
-    implementation Koin.core
-    implementation Koin.androidCore
-    implementation Koin.viewmodel
     implementation Depend.jDatabinding
     implementation AndroidX.cardview
     implementation Retrofit.runtime

@@ -36,3 +36,11 @@ fun Context.isConnectedNetwork(): Boolean = run {
     val activeNetwork: NetworkInfo? = cm.activeNetworkInfo
     activeNetwork?.isConnectedOrConnecting == true
 }
+
+inline fun <T> String.getEmptyOrDefault(default: () -> T): T {
+    if (isNullOrEmpty() || this == "null") {
+        return default()
+    } else {
+        return this as T
+    }
+}

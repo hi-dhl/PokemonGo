@@ -20,11 +20,14 @@ import android.app.Activity
 import android.view.View
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
+import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import coil.api.load
 import com.hi.dhl.jprogressview.JProgressView
 import com.hi.dhl.pokemon.R
+import com.hi.dhl.pokemon.model.PokemonInfoModel
 import com.hi.dhl.pokemon.model.PokemonItemModel
+import com.hi.dhl.pokemon.ui.detail.AlbumAdapter
 import com.hi.dhl.pokemon.ui.detail.DetailActivity
 import timber.log.Timber
 
@@ -41,6 +44,15 @@ fun bindingAvator(imageView: ImageView, url: String) {
     imageView.load(url) {
         crossfade(true)
         placeholder(R.mipmap.ic_launcher_round)
+    }
+}
+
+@BindingAdapter("bindSmallImage")
+fun bindingSmallImage(imageView: ImageView, url: String) {
+    imageView.load(url) {
+        crossfade(true)
+        placeholder(R.mipmap.ic_launcher_round)
+        size(280,280)
     }
 }
 
@@ -75,4 +87,18 @@ fun bindingClick(view: View, model: PokemonItemModel) {
             model
         )
     }
+}
+
+@BindingAdapter("bindAdapter", "bindData")
+fun bindingAdapter(
+    recyclerView: RecyclerView,
+    albumAdapter: AlbumAdapter,
+    data: List<PokemonInfoModel.AlbumModel>?
+) {
+    data?.let {
+        recyclerView.adapter = albumAdapter
+        albumAdapter.submitList(data)
+        albumAdapter.notifyDataSetChanged()
+    }
+
 }

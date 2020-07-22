@@ -75,6 +75,19 @@
     <dimen name="margin_20dp">20dp</dimen>
     <dimen name="margin_25dp">25dp</dimen>
 
+    <dimen name="dp_8">8dp</dimen>
+    <dimen name="dp_16">16dp</dimen>
+    <dimen name="dp_24">24dp</dimen>
+    <dimen name="dp_32">32dp</dimen>
+    <dimen name="dp_40">40dp</dimen>
+    <dimen name="dp_50">50dp</dimen>
+    <dimen name="dp_48">48dp</dimen>
+    <dimen name="dp_56">56dp</dimen>
+    <dimen name="dp_64">64dp</dimen>
+    <dimen name="dp_72">72dp</dimen>
+    <dimen name="dp_80">80dp</dimen>
+    <dimen name="dp_160">160dp</dimen>
+
     <dimen name="common_radius_8dp">8dp</dimen>
 
     <dimen name="card_vertical_height">100dp</dimen>

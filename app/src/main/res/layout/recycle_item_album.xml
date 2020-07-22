@@ -21,21 +21,18 @@
     <data>
 
         <variable
-            name="pokemonListModel"
-            type="com.hi.dhl.pokemon.model.PokemonItemModel" />
+            name="album"
+            type="com.hi.dhl.pokemon.model.PokemonInfoModel.AlbumModel" />
 
-        <variable
-            name="viewModel"
-            type="com.hi.dhl.pokemon.ui.detail.DetailViewModel" />
-
-        <variable
-            name="albumAdapter"
-            type="com.hi.dhl.pokemon.ui.detail.AlbumAdapter" />
     </data>
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/avator"
+        android:layout_width="@dimen/dp_80"
+        android:layout_height="@dimen/dp_80"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
+        android:src="@mipmap/ic_launcher_round"
+        app:bindSmallImage="@{album.url}" />
 
 </layout>
