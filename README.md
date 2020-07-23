@@ -25,7 +25,7 @@
 **2020-07-23:**
 
 * Flow 在 MVVM 当中的使用
-* Activity 、Frahment、ViewModel 结合 Flow 三种使用方式
+* Activity 、Fragment、ViewModel 结合 Flow 三种使用方式
 * Flow 的异常处理
 * 增加 Fragment 1.2.0 上重要的更新： 通过 Fragment 的构造函数传递参数，以及 FragmentFactory 和 FragmentContainerView 的使用
 * ......
@@ -140,6 +140,7 @@ Jetpack 的视图模型的 MVVM 架构由 View + DataBinding + ViewModel + Model
 * 加入更多 Jetpack 成员
 * 设计更多的实用场景
 * 增加单元测试
+* 增加 Motionlayout 的使用
 * ......
 
 ## 结语
