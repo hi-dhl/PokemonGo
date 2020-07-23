@@ -22,6 +22,21 @@
 
 ### PokemonGo 包含了以下功能
 
+**2020-07-23:**
+
+* Flow 在 MVVM 当中的使用
+* Activity 、Frahment、ViewModel 结合 Flow 三种使用方式
+* Flow 的异常处理
+* 增加 Fragment 1.2.0 上重要的更新： 通过 Fragment 的构造函数传递参数，以及 FragmentFactory 和 FragmentContainerView 的使用
+* ......
+
+对应分析文章：
+
+* [Google 推荐在 MVVM 架构中使用 Kotlin Flow](https://juejin.im/post/5f153adff265da22fb287e6e)
+* [[译][Google工程师] 详解 FragmentFactory 如何优雅使用 Koin 以及部分源码分析](https://juejin.im/post/5ecb16f1f265da76fb0c3967)
+
+**2020-07-14:**
+
 1. 自定义 MediatorResult 实现 network + db 的混合使用 ( MediatorResult 是 Paging3 当中重要成员 )
 2. 使用 Data Mapper 分离数据源 和 UI
 3. Kotlin Flow 结合  Retrofit2 + Room 的混合使用
