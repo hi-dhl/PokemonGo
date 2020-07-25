@@ -88,7 +88,7 @@ class DetailsFragment(args: String) : DataBindingFragment() {
 //        // 方法三
 //        lifecycleScope.launch {
 //            mViewModel.apply {
-//                fectchPokemonInfo3(mPokemonModel.name).observe(this@DetailsFragment, Observer {
+//                fectchPokemonInfo3(mPokemonModel.name).observe(viewLifecycleOwner, Observer {
 //                    // 将数据显示在页面上
 //                })
 //            }
