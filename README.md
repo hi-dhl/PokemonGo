@@ -37,7 +37,7 @@
 
 **2020-07-14:**
 
-1. 自定义 MediatorResult 实现 network + db 的混合使用 ( MediatorResult 是 Paging3 当中重要成员 )
+1. 自定义 RemoteMediator 实现 network + db 的混合使用 ( RemoteMediator 是 Paging3 当中重要成员 )
 2. 使用 Data Mapper 分离数据源 和 UI
 3. Kotlin Flow 结合  Retrofit2 + Room 的混合使用
 4. Kotlin Flow 与 LiveData 的使用
@@ -56,7 +56,7 @@
 * [Gradle Versions Plugin](https://github.com/ben-manes/gradle-versions-plugin)：检查依赖库是否存在最新版本
 * [Kotlin Flow](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/-flow/)：flow 是对 Kotlin 协程的扩展，让我们可以像运行同步代码一样运行异步代码
 * JetPack
-    * Paging3（network + db）：用到了 Paging3 中的  `MediatorResult` 用来实现 network + db
+    * Paging3（network + db）：用到了 Paging3 中的  `RemoteMediator` 用来实现 network + db
     * Dagger-Hilt (2.28-alpha)：依赖注入框架
     * App Startup：设置组件初始化顺序
     * DataBinding：以声明方式将可观察数据绑定到界面上

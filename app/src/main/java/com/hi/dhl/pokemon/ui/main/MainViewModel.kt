@@ -19,6 +19,7 @@ package com.hi.dhl.pokemon.ui.main
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import com.hi.dhl.pokemon.data.repository.Repository
 import com.hi.dhl.pokemon.model.PokemonItemModel
 
@@ -35,6 +36,6 @@ class MainViewModel @ViewModelInject constructor(
 ) : ViewModel() {
 
     fun postOfData(): LiveData<PagingData<PokemonItemModel>> =
-        polemonRepository.featchPokemonList().asLiveData()
+        polemonRepository.featchPokemonList().cachedIn(viewModelScope).asLiveData()
 
 }

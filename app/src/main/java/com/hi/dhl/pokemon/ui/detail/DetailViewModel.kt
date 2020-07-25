@@ -22,10 +22,7 @@ import androidx.lifecycle.*
 import com.hi.dhl.pokemon.data.repository.Repository
 import com.hi.dhl.pokemon.model.PokemonInfoModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.onCompletion
-import kotlinx.coroutines.flow.onStart
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import timber.log.Timber
 

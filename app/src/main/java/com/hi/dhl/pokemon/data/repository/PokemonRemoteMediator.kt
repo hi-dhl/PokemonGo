@@ -56,10 +56,36 @@ class PokemonRemoteMediator(
             val pageKey = when (loadType) {
                 // 首次访问 或者调用 PagingDataAdapter.refresh()
                 LoadType.REFRESH -> null
+
                 // 在当前加载的数据集的开头加载数据时
                 LoadType.PREPEND -> return MediatorResult.Success(endOfPaginationReached = true)
-                // 在当前数据集末尾添加数据
-                LoadType.APPEND -> {
+
+                LoadType.APPEND -> { // 下来加载更多时触发
+
+                    /**
+                     *
+                     * 这里主要获取下一页数据的开始位置，可以理解为从什么地方开始加载下一页数据
+                     * 这里有两种方式来获取下一页加载数据的位置
+                     *
+                     */
+
+                    /**
+                     * 方式一：这种方式比较简单，当前页面最后一条数据是下一页的开始位置
+                     *
+                     * 通过 load 方法的参数 state 获取当页面最后一条数据
+                     */
+//                    val lastItem = state.lastItemOrNull()
+//                    if (lastItem == null) {
+//                        return MediatorResult.Success(
+//                            endOfPaginationReached = true
+//                        )
+//                    }
+//                    lastItem.page
+
+                    /**
+                     * 方式二：比较麻烦，当前分页数据没有对应的远程 key，这个时候需要我们自己建表
+                     * 在项目中的演示的是方式二
+                     */
                     val remoteKey = db.withTransaction {
                         db.remoteKeysDao().getRemoteKeys(remotePokemon)
                     }

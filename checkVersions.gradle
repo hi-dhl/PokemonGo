@@ -3,7 +3,7 @@ apply plugin: "com.github.ben-manes.versions"
 dependencyUpdates.resolutionStrategy {
     componentSelection { rules ->
         rules.all { ComponentSelection selection ->
-            def stableKeyword = ['RELEASE', 'FINAL', 'GA','alpha', 'beta'].any { qualifier -> version.toUpperCase().contains(qualifier) }
+            def stableKeyword = ['RELEASE', 'FINAL', 'GA','ALPHA', 'BETA'].any { qualifier -> version.toUpperCase().contains(qualifier) }
             def regex = /^[0-9,.v-]+(-r)?$/
             !stableKeyword && !(version ==~ regex)
         }
