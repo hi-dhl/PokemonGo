@@ -50,9 +50,23 @@ class PokemonRemoteMediator(
     ): MediatorResult {
         try {
 
+            /**
+             * 在这个方法内将会做三件事
+             *
+             * 1. 参数 LoadType 有个三个值，关于这三个值如何进行判断
+             *      LoadType.REFRESH
+             *      LoadType.PREPEND
+             *      LoadType.APPEND
+             *
+             * 2. 请问网络数据
+             *
+             * 3. 将网路插入到本地数据库中
+             */
+
             val pokemonDao = db.pokemonDao()
             val remoteKeysDao = db.remoteKeysDao()
             Timber.tag(TAG).e("loadType = ${loadType}")
+            // 第一步： 判断 LoadType
             val pageKey = when (loadType) {
                 // 首次访问 或者调用 PagingDataAdapter.refresh()
                 LoadType.REFRESH -> null
@@ -101,6 +115,7 @@ class PokemonRemoteMediator(
                 return MediatorResult.Success(endOfPaginationReached = true)
             }
 
+            // 第二步： 请问网络分页数据
             val page = pageKey ?: 0
             val result = api.fetchPokemonList(
                 state.config.pageSize,
@@ -118,6 +133,7 @@ class PokemonRemoteMediator(
                 )
             }
 
+            // 第三步： 插入数据库
             db.withTransaction {
                 if (loadType == LoadType.REFRESH) {
                     remoteKeysDao.clearRemoteKeys(remotePokemon)

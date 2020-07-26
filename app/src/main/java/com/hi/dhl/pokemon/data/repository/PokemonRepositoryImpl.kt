@@ -23,6 +23,7 @@ import com.hi.dhl.pokemon.data.entity.PokemonEntity
 import com.hi.dhl.pokemon.data.entity.PokemonInfoEntity
 import com.hi.dhl.pokemon.data.local.AppDataBase
 import com.hi.dhl.pokemon.data.mapper.Mapper
+import com.hi.dhl.pokemon.data.remote.PokemonResult
 import com.hi.dhl.pokemon.data.remote.PokemonService
 import com.hi.dhl.pokemon.model.PokemonInfoModel
 import com.hi.dhl.pokemon.model.PokemonItemModel
@@ -31,7 +32,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
-import timber.log.Timber
 
 /**
  * <pre>
@@ -60,25 +60,30 @@ class PokemonRepositoryImpl(
         }
     }
 
-    override suspend fun featchPokemonInfo(name: String): Flow<PokemonInfoModel> {
+    override suspend fun featchPokemonInfo(name: String): Flow<PokemonResult<PokemonInfoModel>> {
         return flow {
-            val pokemonDao = db.pokemonInfoDao()
-            // 查询数据库是否存在，如果不存在请求网络
-            var infoModel = pokemonDao.getPokemon(name)
-            if (infoModel == null) {
-                // 网络请求
-                val netWorkPokemonInfo = api.fetchPokemonInfo(name)
+            try {
+                val pokemonDao = db.pokemonInfoDao()
+                // 查询数据库是否存在，如果不存在请求网络
+                var infoModel = pokemonDao.getPokemon(name)
+                if (infoModel == null) {
+                    // 网络请求
+                    val netWorkPokemonInfo = api.fetchPokemonInfo(name)
 
-                // 将网路请求的数据，换转成的数据库的 model，之后插入数据库
-                infoModel = PokemonInfoEntity.convert2PokemonInfoEntity(netWorkPokemonInfo)
-                // 插入更新数据库
-                pokemonDao.insertPokemon(infoModel)
+                    // 将网路请求的数据，换转成的数据库的 model，之后插入数据库
+                    infoModel = PokemonInfoEntity.convert2PokemonInfoEntity(netWorkPokemonInfo)
+                    // 插入更新数据库
+                    pokemonDao.insertPokemon(infoModel)
+                }
+                // 将数据源的 model 转换成上层用到的 model，
+                // ui 不能直接持有数据源，防止数据源的变化，影响上层的 ui
+                val model = mapper2InfoModel.map(infoModel)
+
+                // 发射转换后的数据
+                emit(PokemonResult.Success(model))
+            } catch (e: Exception) {
+                emit(PokemonResult.Failure(e.cause))
             }
-            // 将数据源的 model 转换成上层用到的 model，
-            // ui 不能直接持有数据源，防止数据源的变化，影响上层的 ui
-            val model = mapper2InfoModel.map(infoModel)
-            // 发射转换后的数据
-            emit(model)
         }.flowOn(Dispatchers.IO) // 通过 flowOn 切换到 io 线程
     }
 

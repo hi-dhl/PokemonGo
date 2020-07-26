@@ -19,12 +19,16 @@ package com.hi.dhl.pokemon.ui.detail
 import androidx.databinding.ObservableBoolean
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
+import com.hi.dhl.pokemon.data.remote.doFailure
+import com.hi.dhl.pokemon.data.remote.doSuccess
 import com.hi.dhl.pokemon.data.repository.Repository
 import com.hi.dhl.pokemon.model.PokemonInfoModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.onCompletion
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 /**
  * <pre>
@@ -44,6 +48,9 @@ class DetailViewModel @ViewModelInject constructor(
     // 对外暴露不可变的 LiveData，只能查询
     val pokemon: LiveData<PokemonInfoModel> = _pokemon
 
+    private val _failure = MutableLiveData<String>()
+    val failure = _failure
+
     /**
      * 方法二
      */
@@ -62,9 +69,14 @@ class DetailViewModel @ViewModelInject constructor(
                 // 请求完成
                 mLoading.set(false)
             }
-            .collectLatest {
-                _pokemon.postValue(it)
-                emit(it)
+            .collectLatest { result ->
+                result.doFailure { throwable ->
+                    _failure.value = throwable?.message ?: "failure"
+                }
+                result.doSuccess { value ->
+                    _pokemon.postValue(value)
+                    emit(value)
+                }
             }
     }
 
@@ -105,11 +117,16 @@ class DetailViewModel @ViewModelInject constructor(
                 // 请求完成
                 mLoading.set(false)
             }
-            .collectLatest {
-                _pokemon.postValue(it)
+            .collectLatest { result ->
+                result.doFailure { throwable ->
+                    _failure.value = throwable?.message ?: "failure"
+                }
+
+                result.doSuccess { value ->
+                    _pokemon.postValue(value)
+                }
             }
     }
-
 
     companion object {
         private val TAG = "DetailViewModel"

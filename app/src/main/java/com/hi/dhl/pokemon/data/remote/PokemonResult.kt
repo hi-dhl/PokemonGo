@@ -24,22 +24,20 @@ package com.hi.dhl.pokemon.data.remote
  * </pre>
  */
 
-sealed class ResultOf<out T> {
-    data class Success<out R>(val value: R) : ResultOf<R>()
-    data class Failure(
-        val message: String?,
-        val throwable: Throwable?
-    ) : ResultOf<Nothing>()
+sealed class PokemonResult<out T> {
+    data class Success<out T>(val value: T) : PokemonResult<T>()
+
+    data class Failure(val throwable: Throwable?) : PokemonResult<Nothing>()
 }
 
-inline fun <reified T> ResultOf<T>.doIfFailure(callback: (error: String?, throwable: Throwable?) -> Unit) {
-    if (this is ResultOf.Failure) {
-        callback(message, throwable)
+inline fun <reified T> PokemonResult<T>.doSuccess(success: (T) -> Unit) {
+    if (this is PokemonResult.Success) {
+        success(value)
     }
 }
 
-inline fun <reified T> ResultOf<T>.doIfSuccess(callback: (value: T) -> Unit) {
-    if (this is ResultOf.Success) {
-        callback(value)
+inline fun <reified T> PokemonResult<T>.doFailure(failure: (Throwable?) -> Unit) {
+    if (this is PokemonResult.Failure) {
+        failure(throwable)
     }
 }
