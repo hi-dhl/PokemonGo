@@ -20,7 +20,12 @@
 <img src="http://cdn.51git.cn/2020-07-14-15947367840380.gif"/> 
 </p>
 
-### PokemonGo 包含了以下功能
+### PokemonGo 更新记录
+
+**2020-07-26:**
+
+* 增加了使用 sealed 在 Flow 基础上封装成功或者失败处理，核心类 `PokemonRepositoryImpl#featchPokemonInfo`
+* 增加了使用 Kotlin 扩展函数减少模板代码，核心类 `PokemonResult`
 
 **2020-07-23:**
 
