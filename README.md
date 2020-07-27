@@ -24,8 +24,12 @@
 
 **2020-07-26:**
 
-* 增加了使用 sealed 在 Flow 基础上封装成功或者失败处理，核心类 `PokemonRepositoryImpl#featchPokemonInfo`
-* 增加了使用 Kotlin 扩展函数减少模板代码，核心类 `PokemonResult`
+* 增加了使用 sealed 在 Flow 基础上封装成功或者失败处理
+* 如何自定义 RemoteMediator 实现 数据库 和 网络 加载数据
+
+以上更新对应分析文章：
+
+* [Google 推荐在项目中使用 sealed 和 RemoteMediator](https://juejin.im/post/5f1e61726fb9a07e594f2f63)
 
 **2020-07-23:**
 
@@ -35,7 +39,7 @@
 * 增加 Fragment 1.2.0 上重要的更新： 通过 Fragment 的构造函数传递参数，以及 FragmentFactory 和 FragmentContainerView 的使用
 * ......
 
-对应分析文章：
+以上更新对应分析文章：
 
 * [Google 推荐在 MVVM 架构中使用 Kotlin Flow](https://juejin.im/post/5f153adff265da22fb287e6e)
 * [[译][Google工程师] 详解 FragmentFactory 如何优雅使用 Koin 以及部分源码分析](https://juejin.im/post/5ecb16f1f265da76fb0c3967)
