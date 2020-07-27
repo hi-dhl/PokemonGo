@@ -1,6 +1,6 @@
 # <p align="center"> PokemonGo <img src='http://cdn.51git.cn/2020-07-15-34.png'></p>
 
-<p align="center"> Jetpack 实战项目 PokemonGo（神奇宝贝）基于 MVVM 架构和 Repository 设计模式 </p>
+<p align="center"> 神奇宝贝 (PokemonGo) 基于 Jetpack + MVVM + Repository + Paging3 + Kotlin Flow 的实战项目 </p>
 
 <p align="center">
 这是一个小型的 App 项目，涉及到技术：Paging3（network + db），Dagger-Hilt，App Startup，DataBinding，Room，Motionlayout，Kotlin Flow，Coil，JProgressView 等等。
