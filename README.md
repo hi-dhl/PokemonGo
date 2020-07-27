@@ -25,7 +25,7 @@
 **2020-07-26:**
 
 * 增加了使用 sealed 在 Flow 基础上封装成功或者失败处理
-* 如何自定义 RemoteMediator 实现 数据库 和 网络 加载数据
+* 自定义 RemoteMediator 实现**数据库**和**网络**加载数据( RemoteMediator 是 Paging3 当中重要成员 )
 
 以上更新对应分析文章：
 
