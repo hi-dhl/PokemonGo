@@ -80,33 +80,32 @@ class PokemonRemoteMediator(
                      *
                      * 这里主要获取下一页数据的开始位置，可以理解为从什么地方开始加载下一页数据
                      * 这里有两种方式来获取下一页加载数据的位置
-                     *
+                     * 方式一：这种方式比较简单，当前页面最后一条数据是下一页的开始位置
+                     * 方式二：比较麻烦，当前分页数据没有对应的远程 key，这个时候需要我们自己建表,
                      */
 
                     /**
                      * 方式一：这种方式比较简单，当前页面最后一条数据是下一页的开始位置
-                     *
                      * 通过 load 方法的参数 state 获取当页面最后一条数据
                      */
-//                    val lastItem = state.lastItemOrNull()
-//                    if (lastItem == null) {
-//                        return MediatorResult.Success(
-//                            endOfPaginationReached = true
-//                        )
-//                    }
-//                    lastItem.page
+                    val lastItem = state.lastItemOrNull()
+                    if (lastItem == null) {
+                        return MediatorResult.Success(
+                            endOfPaginationReached = true
+                        )
+                    }
+                    lastItem.page
 
                     /**
                      * 方式二：比较麻烦，当前分页数据没有对应的远程 key，这个时候需要我们自己建表
-                     * 在项目中的演示的是方式二
                      */
-                    val remoteKey = db.withTransaction {
-                        db.remoteKeysDao().getRemoteKeys(remotePokemon)
-                    }
-                    if (remoteKey == null || remoteKey.nextKey == null) {
-                        return MediatorResult.Success(endOfPaginationReached = true)
-                    }
-                    remoteKey.nextKey
+//                    val remoteKey = db.withTransaction {
+//                        db.remoteKeysDao().getRemoteKeys(remotePokemon)
+//                    }
+//                    if (remoteKey == null || remoteKey.nextKey == null) {
+//                        return MediatorResult.Success(endOfPaginationReached = true)
+//                    }
+//                    remoteKey.nextKey
                 }
             }
 
@@ -129,7 +128,8 @@ class PokemonRemoteMediator(
                 PokemonEntity(
                     name = it.name,
                     url = it.getImageUrl(),
-                    remoteName = remotePokemon
+                    remoteName = remotePokemon,
+                    page = page + 1
                 )
             }
 

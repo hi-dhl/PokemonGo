@@ -8,7 +8,6 @@ def isNonStable = { ComponentSelection selection ->
 }
 
 tasks.named("dependencyUpdates").configure {
-    // Example 3: using the full syntax
     resolutionStrategy {
         componentSelection {
             all { ComponentSelection selection ->
