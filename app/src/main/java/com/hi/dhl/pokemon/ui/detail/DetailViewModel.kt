@@ -38,7 +38,7 @@ import kotlinx.coroutines.launch
  * </pre>
  */
 class DetailViewModel @ViewModelInject constructor(
-    val polemonRepository: Repository
+    private val pokemonRepository: Repository
 ) : ViewModel() {
     val mLoading = ObservableBoolean()
 
@@ -56,7 +56,7 @@ class DetailViewModel @ViewModelInject constructor(
      */
     @OptIn(ExperimentalCoroutinesApi::class)
     fun fectchPokemonInfo2(name: String) = liveData<PokemonInfoModel> {
-        polemonRepository.featchPokemonInfo(name)
+        pokemonRepository.fetchPokemonInfo(name)
             .onStart {
                 // 在调用 flow 请求数据之前，做一些准备工作，例如显示正在加载数据的按钮
                 mLoading.set(true)
@@ -84,8 +84,8 @@ class DetailViewModel @ViewModelInject constructor(
      * 方法三
      */
     @OptIn(ExperimentalCoroutinesApi::class)
-    suspend fun fectchPokemonInfo3(name: String) =
-        polemonRepository.featchPokemonInfo(name)
+    suspend fun fetchPokemonInfo3(name: String) =
+        pokemonRepository.fetchPokemonInfo(name)
             .onStart {
                 // 在调用 flow 请求数据之前，做一些准备工作，例如显示正在加载数据的按钮
                 mLoading.set(true)
@@ -103,8 +103,8 @@ class DetailViewModel @ViewModelInject constructor(
      * 方法一
      */
     @OptIn(ExperimentalCoroutinesApi::class)
-    fun fectchPokemonInfo1(name: String) = viewModelScope.launch {
-        polemonRepository.featchPokemonInfo(name)
+    fun fetchPokemonInfo1(name: String) = viewModelScope.launch {
+        pokemonRepository.fetchPokemonInfo(name)
             .onStart {
                 // 在调用 flow 请求数据之前，做一些准备工作，例如显示正在加载数据的按钮
                 mLoading.set(true)
