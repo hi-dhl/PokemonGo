@@ -32,10 +32,9 @@ import com.hi.dhl.pokemon.model.PokemonItemModel
  */
 
 class MainViewModel @ViewModelInject constructor(
-    val polemonRepository: Repository
+    private val pokemonRepository: Repository
 ) : ViewModel() {
 
     fun postOfData(): LiveData<PagingData<PokemonItemModel>> =
-        polemonRepository.featchPokemonList().cachedIn(viewModelScope).asLiveData()
-
+        pokemonRepository.fetchPokemonList().cachedIn(viewModelScope).asLiveData()
 }

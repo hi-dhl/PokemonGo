@@ -30,7 +30,7 @@ import kotlinx.coroutines.flow.Flow
  * </pre>
  */
 interface Repository {
-    fun featchPokemonList(): Flow<PagingData<PokemonItemModel>>
+    fun fetchPokemonList(): Flow<PagingData<PokemonItemModel>>
 
-    suspend fun featchPokemonInfo(name: String): Flow<PokemonResult<PokemonInfoModel>>
+    suspend fun fetchPokemonInfo(name: String): Flow<PokemonResult<PokemonInfoModel>>
 }

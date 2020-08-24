@@ -49,7 +49,7 @@ class PokemonRepositoryImpl(
     val mapper2InfoModel: Mapper<PokemonInfoEntity, PokemonInfoModel>
 ) : Repository {
 
-    override fun featchPokemonList(): Flow<PagingData<PokemonItemModel>> {
+    override fun fetchPokemonList(): Flow<PagingData<PokemonItemModel>> {
         return Pager(
             config = pageConfig,
             remoteMediator = PokemonRemoteMediator(api, db)
@@ -60,7 +60,7 @@ class PokemonRepositoryImpl(
         }
     }
 
-    override suspend fun featchPokemonInfo(name: String): Flow<PokemonResult<PokemonInfoModel>> {
+    override suspend fun fetchPokemonInfo(name: String): Flow<PokemonResult<PokemonInfoModel>> {
         return flow {
             try {
                 val pokemonDao = db.pokemonInfoDao()

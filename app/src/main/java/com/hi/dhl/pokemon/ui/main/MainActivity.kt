@@ -32,25 +32,25 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainActivity : DataBindingAppCompatActivity() {
-    private val mBidning: ActivityMainBinding by binding(R.layout.activity_main)
+    private val mBinding: ActivityMainBinding by binding(R.layout.activity_main)
     private val mViewModel: MainViewModel by viewModels()
-    private val mPomemonAdapter by lazy { PokemonAdapter() }
+    private val mPokemonAdapter by lazy { PokemonAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mBidning.apply {
-            recyleView.adapter = mPomemonAdapter.withLoadStateFooter(FooterAdapter(mPomemonAdapter))
+        mBinding.apply {
+            recyleView.adapter = mPokemonAdapter.withLoadStateFooter(FooterAdapter(mPokemonAdapter))
             mainViewModel = mViewModel
             lifecycleOwner = this@MainActivity
         }
 
         mViewModel.postOfData().observe(this, Observer {
-            mPomemonAdapter.submitData(lifecycle, it)
+            mPokemonAdapter.submitData(lifecycle, it)
             swiperRefresh.isEnabled = false
         })
         
         lifecycleScope.launchWhenCreated {
-            mPomemonAdapter.loadStateFlow.collectLatest { state ->
+            mPokemonAdapter.loadStateFlow.collectLatest { state ->
                 swiperRefresh.isRefreshing = state.refresh is LoadState.Loading
             }
         }
