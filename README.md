@@ -7,6 +7,18 @@
 </p>
 
 <p align="center">
+  
+  <a title="GitHub Stars" target="_blank" href="https://github.com/hi-dhl/PokemonGo/stargazers">
+  <img alt="GitHub Stars" src="https://img.shields.io/github/stars/hi-dhl/PokemonGo.svg?label=Stars&style=social">
+  </a>  
+  
+  <a title="GitHub Forks" target="_blank" href="https://github.com/hi-dhl/PokemonGo/network/members">
+  <img alt="GitHub Forks" src="https://img.shields.io/github/forks/hi-dhl/PokemonGo.svg?label=Forks&style=social">
+  </a>
+  
+</p>
+
+<p align="center">
 <a href="https://github.com/hi-dhl"><img src="https://img.shields.io/badge/GitHub-HiDhl-4BC51D.svg?style=flat"></a> <a href="https://opensource.org/licenses/Apache-2.0"><img src="https://img.shields.io/badge/license-Apache2.0-blue.svg?style=flat"></a> <img src="https://img.shields.io/badge/language-kotlin-orange.svg"/> <img src="https://img.shields.io/badge/platform-android-lightgrey.svg"/>
 </p>
 
