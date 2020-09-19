@@ -74,6 +74,8 @@
     <dimen name="margin_60dp">60dp</dimen>
     <dimen name="margin_20dp">20dp</dimen>
     <dimen name="margin_25dp">25dp</dimen>
+    <dimen name="margin_80dp">80dp</dimen>
+    <dimen name="margin_100dp">100dp</dimen>
 
     <dimen name="dp_8">8dp</dimen>
     <dimen name="dp_16">16dp</dimen>
@@ -97,4 +99,5 @@
     <dimen name="details_img_m_t">180dp</dimen>
     <dimen name="progress_height">6dp</dimen>
     <dimen name="progress_paint_bg_width">10dp</dimen>
+    <dimen name="search_height">30dp</dimen>
 </resources>

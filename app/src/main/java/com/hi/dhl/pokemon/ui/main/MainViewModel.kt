@@ -22,6 +22,12 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.hi.dhl.pokemon.data.repository.Repository
 import com.hi.dhl.pokemon.model.PokemonItemModel
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
+import kotlinx.coroutines.channels.ConflatedBroadcastChannel
+import kotlinx.coroutines.flow.asFlow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.flatMapLatest
 
 /**
  * <pre>
@@ -31,10 +37,30 @@ import com.hi.dhl.pokemon.model.PokemonItemModel
  * </pre>
  */
 
+@FlowPreview
+@ExperimentalCoroutinesApi
 class MainViewModel @ViewModelInject constructor(
     private val pokemonRepository: Repository
 ) : ViewModel() {
 
+    private val mChanncel = ConflatedBroadcastChannel<String>()
+
+    private val _failure = MutableLiveData<String>()
+    val failure = _failure
+
+    // 通过 paging3 加载数据
     fun postOfData(): LiveData<PagingData<PokemonItemModel>> =
         pokemonRepository.fetchPokemonList().cachedIn(viewModelScope).asLiveData()
+
+    // 使用 ConflatedBroadcastChannel 进行搜索
+    val searchLiveData = mChanncel.asFlow()
+        .flatMapLatest { search ->
+            pokemonRepository.fetchPokemonByParameter(search).cachedIn(viewModelScope)
+        }
+        .catch { throwable ->
+            _failure.value = throwable.message
+        }.asLiveData()
+
+    fun searchQueryParamter(paramter: String) = mChanncel.offer(paramter)
+
 }

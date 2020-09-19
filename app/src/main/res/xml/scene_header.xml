@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright 2020. hi-dhl (Jack Deng)
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -70,20 +69,14 @@
             motion:layout_constraintVertical_chainStyle="packed"
             motion:srcCompat="@mipmap/ic_launcher_round" />
 
+
         <Constraint
-            android:id="@id/textView"
-            android:layout_width="wrap_content"
+            android:id="@+id/search"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:textColor="@color/color_white"
-            android:visibility="gone"
-            motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintEnd_toEndOf="parent"
-            motion:layout_constraintHorizontal_bias="0.5"
-            motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintTop_toBottomOf="@+id/name" />
+            android:paddingBottom="@dimen/space_20dp"
+            app:layout_constraintTop_toBottomOf="@+id/name" />
+
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">
@@ -104,8 +97,7 @@
             android:layout_width="wrap_content"
             android:layout_height="20dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="@dimen/margin_20dp"
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintStart_toStartOf="parent" />
 
@@ -113,17 +105,22 @@
             android:id="@id/icon"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="@dimen/margin_16dp"
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintEnd_toEndOf="parent" />
 
+
         <Constraint
-            android:id="@id/textView"
-            android:layout_width="wrap_content"
+            android:id="@+id/search"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone" />
+            android:layout_marginStart="@dimen/margin_100dp"
+            android:layout_marginTop="@dimen/margin_30dp"
+            android:layout_marginEnd="@dimen/margin_30dp"
+            android:layout_marginBottom="0dp"
+            app:layout_constraintLeft_toRightOf="@id/name"
+            app:layout_constraintRight_toLeftOf="@id/icon" />
 
     </ConstraintSet>
 </MotionScene>

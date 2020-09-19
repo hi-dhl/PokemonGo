@@ -19,4 +19,5 @@
     <string name="footer_retary">重试</string>
     <string name="weight">Weight</string>
     <string name="height">Height</string>
+    <string name="search_et_hit">输入神奇宝贝的名字</string>
 </resources>

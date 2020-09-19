@@ -24,10 +24,9 @@ import com.hi.dhl.pokemon.data.remote.doSuccess
 import com.hi.dhl.pokemon.data.repository.Repository
 import com.hi.dhl.pokemon.model.PokemonInfoModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.onCompletion
-import kotlinx.coroutines.flow.onStart
+import kotlinx.coroutines.FlowPreview
+import kotlinx.coroutines.channels.ConflatedBroadcastChannel
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
 /**
@@ -37,6 +36,9 @@ import kotlinx.coroutines.launch
  *     desc  :
  * </pre>
  */
+
+@FlowPreview
+@ExperimentalCoroutinesApi
 class DetailViewModel @ViewModelInject constructor(
     private val pokemonRepository: Repository
 ) : ViewModel() {
@@ -54,7 +56,6 @@ class DetailViewModel @ViewModelInject constructor(
     /**
      * 方法二
      */
-    @OptIn(ExperimentalCoroutinesApi::class)
     fun fectchPokemonInfo2(name: String) = liveData<PokemonInfoModel> {
         pokemonRepository.fetchPokemonInfo(name)
             .onStart {
@@ -83,7 +84,6 @@ class DetailViewModel @ViewModelInject constructor(
     /**
      * 方法三
      */
-    @OptIn(ExperimentalCoroutinesApi::class)
     suspend fun fetchPokemonInfo3(name: String) =
         pokemonRepository.fetchPokemonInfo(name)
             .onStart {
@@ -102,7 +102,6 @@ class DetailViewModel @ViewModelInject constructor(
     /**
      * 方法一
      */
-    @OptIn(ExperimentalCoroutinesApi::class)
     fun fetchPokemonInfo1(name: String) = viewModelScope.launch {
         pokemonRepository.fetchPokemonInfo(name)
             .onStart {
@@ -127,6 +126,7 @@ class DetailViewModel @ViewModelInject constructor(
                 }
             }
     }
+
 
     companion object {
         private val TAG = "DetailViewModel"

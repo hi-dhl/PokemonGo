@@ -19,6 +19,7 @@ package com.hi.dhl.pokemon.data.repository
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
+import androidx.paging.PagingSource
 import com.hi.dhl.pokemon.data.entity.PokemonEntity
 import com.hi.dhl.pokemon.data.entity.PokemonInfoEntity
 import com.hi.dhl.pokemon.data.local.AppDataBase
@@ -85,6 +86,17 @@ class PokemonRepositoryImpl(
                 emit(PokemonResult.Failure(e.cause))
             }
         }.flowOn(Dispatchers.IO) // 通过 flowOn 切换到 io 线程
+    }
+
+    override suspend fun fetchPokemonByParameter(parameter: String): Flow<PagingData<PokemonItemModel>> {
+        return Pager(pageConfig) {
+            // 加载数据库的数据
+            db.pokemonDao().pokemonInfoByParameter(parameter)
+        }.flow.map { pagingData ->
+
+            // 数据映射，数据库实体 PersonEntity ——>  上层用到的实体 Person
+            pagingData.map { mapper2ItemMolde.map(it) }
+        }
     }
 
     companion object {

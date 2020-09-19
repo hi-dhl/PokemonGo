@@ -18,6 +18,7 @@ package com.hi.dhl.pokemon.ui.main
 
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
@@ -27,9 +28,14 @@ import com.hi.dhl.pokemon.databinding.ActivityMainBinding
 import com.hi.dhl.pokemon.ui.main.footer.FooterAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.motion_coordinatorlayout_header.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+@FlowPreview
+@ExperimentalCoroutinesApi
 @AndroidEntryPoint
 class MainActivity : DataBindingAppCompatActivity() {
     private val mBinding: ActivityMainBinding by binding(R.layout.activity_main)
@@ -42,18 +48,26 @@ class MainActivity : DataBindingAppCompatActivity() {
             recyleView.adapter = mPokemonAdapter.withLoadStateFooter(FooterAdapter(mPokemonAdapter))
             mainViewModel = mViewModel
             lifecycleOwner = this@MainActivity
+            searchView.addTextChangedListener {
+                val result = it.toString()
+                mViewModel.searchQueryParamter(result)
+            }
         }
 
         mViewModel.postOfData().observe(this, Observer {
             mPokemonAdapter.submitData(lifecycle, it)
             swiperRefresh.isEnabled = false
         })
-        
+
         lifecycleScope.launchWhenCreated {
             mPokemonAdapter.loadStateFlow.collectLatest { state ->
                 swiperRefresh.isRefreshing = state.refresh is LoadState.Loading
             }
         }
+
+        mViewModel.searchLiveData.observe(this, Observer {
+            mPokemonAdapter.submitData(lifecycle, it)
+        })
 
     }
 }

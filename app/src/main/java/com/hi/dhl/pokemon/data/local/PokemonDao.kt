@@ -39,7 +39,9 @@ interface PokemonDao {
     @Query("SELECT * FROM PokemonEntity")
     fun getPokemon(): PagingSource<Int, PokemonEntity>
 
-
     @Query("DELETE FROM PokemonEntity where remoteName = :name")
     suspend fun clearPokemon(name: String)
+
+    @Query("SELECT * FROM PokemonEntity where name LIKE '%' || :parameter || '%'")
+    fun pokemonInfoByParameter(parameter: String): PagingSource<Int, PokemonEntity>
 }
