@@ -35,6 +35,8 @@ object Versions {
     val paging = "3.0.0-alpha02"
     val timber = "4.7.1"
     val kotlin = "1.3.72"
+    val kotlinCoroutinesCore = "1.3.7"
+    val kotlinCoroutinesAndrid = "1.3.6"
     val koin = "2.1.5"
     val work = "2.2.0"
     val room = "2.3.0-alpha01"
@@ -104,6 +106,8 @@ object Fragment {
 object Kt {
     val stdlibJdk7 = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
     val stdlibJdk8 = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin}"
+    val coroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.kotlinCoroutinesCore}"
+    val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.kotlinCoroutinesAndrid}"
     val test = "org.jetbrains.kotlin:kotlin-test-junit:${Versions.kotlin}"
     val plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
 }

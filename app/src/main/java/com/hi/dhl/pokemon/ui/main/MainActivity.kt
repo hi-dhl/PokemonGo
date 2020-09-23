@@ -32,7 +32,6 @@ import kotlinx.android.synthetic.main.motion_coordinatorlayout_header.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 
 @FlowPreview
 @ExperimentalCoroutinesApi
@@ -50,7 +49,8 @@ class MainActivity : DataBindingAppCompatActivity() {
             lifecycleOwner = this@MainActivity
             searchView.addTextChangedListener {
                 val result = it.toString()
-                mViewModel.searchQueryParamter(result)
+                mViewModel.queryParameterForDb(result) // 搜索数据库
+//                mViewModel.queryParameterForNetWork(result) // 网络搜索
             }
         }
 
@@ -65,9 +65,30 @@ class MainActivity : DataBindingAppCompatActivity() {
             }
         }
 
-        mViewModel.searchLiveData.observe(this, Observer {
+        // 数据库搜索回调监听
+        mViewModel.searchResultForDb.observe(this, Observer {
             mPokemonAdapter.submitData(lifecycle, it)
         })
 
+        // 网络搜索回调监听
+        mViewModel.searchResultMockNetWork.observe(this, Observer {
+//            mPokemonAdapter.submitData(lifecycle, it)
+        })
     }
+
+    companion object {
+        private const val TAG = "MainActivity"
+    }
+
+    /**
+     *  callbackFlow 提供了一个简单的回调 Api，并且在关闭的时候，移除注册监听
+     *  在很多场景都可以使用，例如定位 locatoinManager#requestSingleUpdate 在 awaitClose 移除掉监听
+     */
+//    fun AppCompatEditText.addTextChangedListenerFlow(): Flow<String> = callbackFlow {
+//        val watch = addTextChangedListener {
+//            sendBlocking(it.toString().trim())
+//        }
+//        addTextChangedListener(watch)
+////        awaitClose { removeTextChangedListener(watch) }
+//    }
 }
