@@ -34,6 +34,16 @@
 
 ### PokemonGo 更新记录
 
+**2020-09-27:**
+
+* 使用 ConflatedBroadcastChannel 实现 DB 搜索
+* 使用 StateFlow 实现 NetWork 搜索
+* 增加了 Kotlin 常用操作符 `debounce` 、`filter` 、`flatMapLatest` 、 `distinctUntilChanged` 的使用
+
+以上更新对应分析文章：
+
+* [Kotlin StateFlow 搜索功能的实践 DB + NetWork](https://juejin.im/post/6876990111113248775)
+
 **2020-07-26:**
 
 * 增加了使用 sealed 在 Flow 基础上封装成功或者失败处理
