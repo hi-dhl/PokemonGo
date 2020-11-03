@@ -58,7 +58,7 @@ class PokemonRemoteMediator(
              *      LoadType.PREPEND
              *      LoadType.APPEND
              *
-             * 2. 请问网络数据
+             * 2. 访问网络数据
              *
              * 3. 将网路插入到本地数据库中
              */

@@ -37,10 +37,10 @@ fun Context.isConnectedNetwork(): Boolean = run {
     activeNetwork?.isConnectedOrConnecting == true
 }
 
-inline fun <T> String.getEmptyOrDefault(default: () -> T): T {
-    if (isNullOrEmpty() || this == "null") {
-        return default()
+inline fun <reified T> String.getEmptyOrDefault(default: () -> T): T {
+    return if (isNullOrEmpty() || this == "null") {
+        default()
     } else {
-        return this as T
+        this as T
     }
 }
