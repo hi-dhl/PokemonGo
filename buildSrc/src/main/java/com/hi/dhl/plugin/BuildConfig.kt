@@ -24,10 +24,10 @@ package com.hi.dhl.plugin
  * </pre>
  */
 object BuildConfig {
-    val compileSdkVersion = 29
-    val buildToolsVersion = "29.0.3"
-    val minSdkVersion = 26
-    val targetSdkVersion = 29
-    val versionCode = 10001
-    val versionName = "1.0.1"
+    const val compileSdkVersion = 29
+    const val buildToolsVersion = "29.0.3"
+    const val minSdkVersion = 26
+    const val targetSdkVersion = 29
+    const val versionCode = 10001
+    const val versionName = "1.0.1"
 }
