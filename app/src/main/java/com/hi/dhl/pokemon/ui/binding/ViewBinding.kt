@@ -52,7 +52,7 @@ fun bindingSmallImage(imageView: ImageView, url: String) {
     imageView.load(url) {
         crossfade(true)
         placeholder(R.mipmap.ic_launcher_round)
-        size(280,280)
+        size(280, 280)
     }
 }
 

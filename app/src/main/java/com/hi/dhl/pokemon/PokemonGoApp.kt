@@ -28,7 +28,7 @@ import dagger.hilt.android.HiltAndroidApp
  */
 
 @HiltAndroidApp
-class PokemonGoApp : Application(){
+class PokemonGoApp : Application() {
     /**
      * 1. 所有使用 Hilt 的 App 必须包含 一个使用 @HiltAndroidApp 注解的 Application
      * 2. @HiltAndroidApp 将会触发 Hilt 代码的生成，包括用作应用程序依赖项容器的基类
