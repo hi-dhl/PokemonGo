@@ -71,13 +71,13 @@
                 android:id="@+id/album"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:translationZ="100dp"
+                app:bindAdapter="@{albumAdapter}"
+                app:bindData="@{viewModel.pokemon.albums}"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/avator"
-                app:bindAdapter="@{albumAdapter}"
-                android:translationZ="100dp"
-                app:bindData="@{viewModel.pokemon.albums}"
                 app:spanCount="4" />
 
             <androidx.appcompat.widget.AppCompatTextView

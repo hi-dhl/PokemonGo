@@ -15,8 +15,7 @@
   -->
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -30,8 +29,8 @@
         android:id="@+id/avator"
         android:layout_width="@dimen/dp_80"
         android:layout_height="@dimen/dp_80"
-        android:scaleType="fitXY"
         android:adjustViewBounds="true"
+        android:scaleType="fitXY"
         android:src="@mipmap/ic_launcher_round"
         app:bindSmallImage="@{album.url}" />
 

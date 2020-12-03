@@ -27,6 +27,7 @@ import com.google.gson.reflect.TypeToken
  * </pre>
  */
 
-fun <T> Gson.typedToJson(src:T):String = toJson(src)
+fun <T> Gson.typedToJson(src: T): String = toJson(src)
 
-inline fun <reified T:Any> Gson.fromJson(json:String):T = fromJson(json,object : TypeToken<T>(){}.type)
+inline fun <reified T : Any> Gson.fromJson(json: String): T =
+    fromJson(json, object : TypeToken<T>() {}.type)

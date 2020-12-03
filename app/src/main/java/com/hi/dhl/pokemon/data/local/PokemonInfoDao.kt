@@ -21,7 +21,6 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.hi.dhl.pokemon.data.entity.PokemonInfoEntity
-import kotlinx.coroutines.flow.Flow
 
 /**
  * <pre>

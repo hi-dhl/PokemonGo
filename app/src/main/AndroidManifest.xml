@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright 2020. hi-dhl (Jack Deng)
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -41,8 +40,8 @@
 
         <activity
             android:name=".ui.detail.DetailActivity"
-            android:theme="@style/ActivityTheme"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"
