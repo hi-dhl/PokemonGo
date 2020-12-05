@@ -43,7 +43,9 @@
                 android:layout_height="200dp"
                 app:srcCompat="@drawable/main_head_bg_round">
 
-                <include layout="@layout/motion_coordinatorlayout_header" />
+                <include
+                    android:id="@+id/layoutHeader"
+                    layout="@layout/motion_coordinatorlayout_header" />
 
             </com.google.android.material.appbar.AppBarLayout>
 

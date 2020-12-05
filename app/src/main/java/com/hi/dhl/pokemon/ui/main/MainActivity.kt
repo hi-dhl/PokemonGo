@@ -27,8 +27,6 @@ import com.hi.dhl.pokemon.R
 import com.hi.dhl.pokemon.databinding.ActivityMainBinding
 import com.hi.dhl.pokemon.ui.main.footer.FooterAdapter
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.motion_coordinatorlayout_header.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.collectLatest
@@ -47,21 +45,23 @@ class MainActivity : DataBindingAppCompatActivity() {
             recyleView.adapter = mPokemonAdapter.withLoadStateFooter(FooterAdapter(mPokemonAdapter))
             mainViewModel = mViewModel
             lifecycleOwner = this@MainActivity
-            searchView.addTextChangedListener {
-                val result = it.toString()
-                mViewModel.queryParameterForDb(result) // 搜索数据库
+        }
+
+
+        mBinding.layoutHeader.searchView.addTextChangedListener {
+            val result = it.toString()
+            mViewModel.queryParameterForDb(result) // 搜索数据库
 //                mViewModel.queryParameterForNetWork(result) // 网络搜索
-            }
         }
 
         mViewModel.postOfData().observe(this, Observer {
             mPokemonAdapter.submitData(lifecycle, it)
-            swiperRefresh.isEnabled = false
+            mBinding.swiperRefresh.isEnabled = false
         })
 
         lifecycleScope.launchWhenCreated {
             mPokemonAdapter.loadStateFlow.collectLatest { state ->
-                swiperRefresh.isRefreshing = state.refresh is LoadState.Loading
+                mBinding.swiperRefresh.isRefreshing = state.refresh is LoadState.Loading
             }
         }
 

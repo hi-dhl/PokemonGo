@@ -1,10 +1,13 @@
 apply from: './checkVersions.gradle'
 
 buildscript {
-    ext.kotlin_version = "1.4.10"
+    ext.kotlin_version = "1.4.20-M2"
     repositories {
-        google()
         maven { url "https://maven.aliyun.com/repository/public" }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+
+        google()
+        jcenter()
     }
     dependencies {
         classpath "com.android.tools.build:gradle:4.1.1"
@@ -16,8 +19,11 @@ buildscript {
 
 allprojects {
     repositories {
-        google()
         maven { url "https://maven.aliyun.com/repository/public" }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+
+        google()
+        jcenter()
     }
 }
 
