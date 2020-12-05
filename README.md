@@ -28,12 +28,12 @@
 <img src="http://img.hi-dhl.com/Pokemon.png"/> 
 </p>
 
-
 ### PokemonGo 更新记录
 
 **2020-12-05:**
 
-* upgrad kotlin plugin to 1.4.2 and delete Kotlin synthetics 
+* upgrad kotlin plugin to 1.4.2
+* delete Kotlin synthetics 
 
 **2020-09-27:**
 
@@ -212,8 +212,6 @@ Jetpack 的视图模型的 MVVM 架构由 View + DataBinding + ViewModel + Model
 
 * PokemonGo use [PokeAPI](https://pokeapi.co) data
 * Thanks to the [Pokedex](https://github.com/skydoves/Pokedex) 、 [Kotlin-Pokedex ](https://github.com/mrcsxsiq/Kotlin-Pokedex) 、 [gradle-versions-plugin](https://github.com/ben-manes/gradle-versions-plugin) and Jetpack open source project
-
-其中界面设计参考了 以上项目
 
 ## License
 
