@@ -1,7 +1,7 @@
 apply from: './checkVersions.gradle'
 
 buildscript {
-    ext.kotlin_version = "1.4.20-M2"
+    ext.kotlin_version = "1.4.20"
     repositories {
         maven { url "https://maven.aliyun.com/repository/public" }
         maven { url 'https://maven.aliyun.com/repository/google' }

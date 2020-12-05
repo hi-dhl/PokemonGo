@@ -31,7 +31,10 @@ class MainActivity : DataBindingAppCompatActivity() {
             lifecycleOwner = this@MainActivity
         }
 
-
+        /**
+         * 分为 数据库 和 网络搜索
+         * 可以运行注释掉的代码，文章链接：https://juejin.cn/post/6854573220457086990
+         */
         mBinding.layoutHeader.searchView.addTextChangedListener {
             val result = it.toString()
             mViewModel.queryParameterForDb(result) // 搜索数据库
