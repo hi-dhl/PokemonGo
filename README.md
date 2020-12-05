@@ -22,17 +22,18 @@
 <a href="https://github.com/hi-dhl"><img src="https://img.shields.io/badge/GitHub-HiDhl-4BC51D.svg?style=flat"></a> <a href="https://opensource.org/licenses/Apache-2.0"><img src="https://img.shields.io/badge/license-Apache2.0-blue.svg?style=flat"></a> <img src="https://img.shields.io/badge/language-kotlin-orange.svg"/> <img src="https://img.shields.io/badge/platform-android-lightgrey.svg"/>
 </p>
 
-<p align="center">
-<img src="http://cdn.51git.cn/2020-07-23-Pokemon12.png"/> 
-</p>
-
-<p align="center"> PokemonGo 动态效果图如下所示，如果动图无法查看，请点击这里查看 <a href="http://cdn.51git.cn/2020-07-14-15946978385391.gif"> 动态效果图</a> | <a href="http://cdn.51git.cn/2020-07-14-PokemonGo2.png"> 静态图</a></p>
+<p align="center"> PokemonGo 动态效果图如下所示，如果动图无法查看，请点击这里查看 <a href="http://cdn.51git.cn/2020-07-14-15946978385391.gif"> 动态效果图</a> | <a href="http://img.hi-dhl.com/Pokemon.png"> 静态图</a></p>
 
 <p align="center">
-<img src="http://cdn.51git.cn/2020-07-14-15947367840380.gif"/> 
+<img src="http://img.hi-dhl.com/Pokemon.png"/> 
 </p>
+
 
 ### PokemonGo 更新记录
+
+**2020-12-05:**
+
+* upgrad kotlin plugin to 1.4.2 and delete Kotlin synthetics 
 
 **2020-09-27:**
 
@@ -212,9 +213,12 @@ Jetpack 的视图模型的 MVVM 架构由 View + DataBinding + ViewModel + Model
 * PokemonGo use [PokeAPI](https://pokeapi.co) data
 * Thanks to the [Pokedex](https://github.com/skydoves/Pokedex) 、 [Kotlin-Pokedex ](https://github.com/mrcsxsiq/Kotlin-Pokedex) 、 [gradle-versions-plugin](https://github.com/ben-manes/gradle-versions-plugin) and Jetpack open source project
 
+其中界面设计参考了 以上项目
+
 ## License
 
 ```
+
 Copyright 2020 hi-dhl (Jack Deng)
 
 Licensed under the Apache License, Version 2.0 (the "License");
