@@ -200,6 +200,18 @@ Jetpack 的视图模型的 MVVM 架构由 View + DataBinding + ViewModel + Model
 
 * 「为互联网人而设计，国内国外名站导航」涵括新闻、体育、生活、娱乐、设计、产品、运营、前端开发、Android 开发等等网址，欢迎前去查看 [为互联网人而设计导航网站](https://site.51git.cn)
 
+## 感谢
+
+**中文：**
+
+* PokemonGo 使用了 [PokeAPI](https://pokeapi.co) 
+* 感谢 [Pokedex](https://github.com/skydoves/Pokedex) 、 [Kotlin-Pokedex ](https://github.com/mrcsxsiq/Kotlin-Pokedex) 、 [gradle-versions-plugin](https://github.com/ben-manes/gradle-versions-plugin) 和 Jetpack 等等开源项目
+
+**English：**
+
+* PokemonGo use [PokeAPI](https://pokeapi.co) data
+* Thanks to the [Pokedex](https://github.com/skydoves/Pokedex) 、 [Kotlin-Pokedex ](https://github.com/mrcsxsiq/Kotlin-Pokedex) 、 [gradle-versions-plugin](https://github.com/ben-manes/gradle-versions-plugin) and Jetpack open source project
+
 ## License
 
 ```
