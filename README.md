@@ -34,6 +34,7 @@
 
 * upgrad kotlin plugin to 1.4.2
 * delete Kotlin synthetics 
+* delete kotlin-android-extensions
 
 **2020-09-27:**
 
