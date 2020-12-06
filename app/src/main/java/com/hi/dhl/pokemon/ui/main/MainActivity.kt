@@ -2,11 +2,12 @@ package com.hi.dhl.pokemon.ui.main
 
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
-import com.hi.dhl.jdatabinding.DataBindingAppCompatActivity
+import com.hi.dhl.jdatabinding.binding
 import com.hi.dhl.pokemon.R
 import com.hi.dhl.pokemon.databinding.ActivityMainBinding
 import com.hi.dhl.pokemon.ui.main.footer.FooterAdapter
@@ -18,8 +19,8 @@ import kotlinx.coroutines.flow.collectLatest
 @FlowPreview
 @ExperimentalCoroutinesApi
 @AndroidEntryPoint
-class MainActivity : DataBindingAppCompatActivity() {
-    private val mBinding: ActivityMainBinding by binding(R.layout.activity_main)
+class MainActivity : AppCompatActivity() {
+    private val mBinding: ActivityMainBinding by binding()
     private val mViewModel: MainViewModel by viewModels()
     private val mPokemonAdapter by lazy { PokemonAdapter() }
 

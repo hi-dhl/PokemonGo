@@ -1,9 +1,7 @@
 package com.hi.dhl.pokemon.ui.detail
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.FragmentManager
@@ -14,6 +12,8 @@ import com.hi.dhl.jdatabinding.DataBindingFragment
 import com.hi.dhl.pokemon.R
 import com.hi.dhl.pokemon.databinding.FragmentDetailsBinding
 import com.hi.dhl.pokemon.model.PokemonItemModel
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 
 /**
  * <pre>
@@ -24,25 +24,23 @@ import com.hi.dhl.pokemon.model.PokemonItemModel
  */
 
 // 如果使用带参数的 Fragment 需要设置 FragmentFactory，告诉系统如何实例化 Fragment
-class DetailsFragment(args: String) : DataBindingFragment() {
+@FlowPreview
+@ExperimentalCoroutinesApi
+class DetailsFragment(args: String) : DataBindingFragment(R.layout.fragment_details) {
 
-    private lateinit var mBinding: FragmentDetailsBinding
+    private val mBinding: FragmentDetailsBinding by binding()
     private val mViewModel: DetailViewModel by activityViewModels()
     private lateinit var mPokemonModel: PokemonItemModel
     val mAlbumAdapter: AlbumAdapter by lazy { AlbumAdapter() }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         mPokemonModel = requireNotNull(arguments?.getParcelable(KEY_LIST_MODEL)) {
             "params is not null"
         }
-        mBinding = binding(inflater, R.layout.fragment_details, container)
 
-        return mBinding.apply {
+        mBinding.apply {
             pokemonListModel = mPokemonModel
             albumAdapter = mAlbumAdapter
             viewModel = mViewModel.apply {
@@ -50,11 +48,7 @@ class DetailsFragment(args: String) : DataBindingFragment() {
                     .observe(viewLifecycleOwner, Observer {})
             }
             lifecycleOwner = this@DetailsFragment
-        }.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+        }
 
         mViewModel.failure.observe(viewLifecycleOwner, Observer {
             Toast.makeText(context, it, Toast.LENGTH_LONG).show()

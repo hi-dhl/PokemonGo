@@ -3,11 +3,14 @@ package com.hi.dhl.pokemon.ui.detail
 import android.content.Context
 import android.os.Bundle
 import androidx.activity.viewModels
-import com.hi.dhl.jdatabinding.DataBindingAppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
+import com.hi.dhl.jdatabinding.binding
 import com.hi.dhl.pokemon.R
 import com.hi.dhl.pokemon.databinding.ActivityDetailsBinding
 import com.hi.dhl.pokemon.model.PokemonItemModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 import org.jetbrains.anko.startActivity
 
 /**
@@ -18,10 +21,12 @@ import org.jetbrains.anko.startActivity
  * </pre>
  */
 
+@FlowPreview
+@ExperimentalCoroutinesApi
 @AndroidEntryPoint
-class DetailActivity : DataBindingAppCompatActivity() {
+class DetailActivity : AppCompatActivity() {
 
-    private val mBindingActivity: ActivityDetailsBinding by binding(R.layout.activity_details)
+    private val mBindingActivity: ActivityDetailsBinding by binding()
     private val mViewModel: DetailViewModel by viewModels()
     lateinit var mPokemonModel: PokemonItemModel
 
