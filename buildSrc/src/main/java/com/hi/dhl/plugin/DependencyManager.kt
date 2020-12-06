@@ -30,7 +30,7 @@ object Versions {
     const val junit = "4.13.1"
     const val junitExt = "1.1.2"
     const val espressoCore = "3.3.0"
-    const val jDatabinding = "1.0.2"
+    const val jDatabinding = "1.0.3"
     const val progressview = "1.0.2"
     const val runtime = "1.1.0"
     const val hit = "2.28-alpha"
